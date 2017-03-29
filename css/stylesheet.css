@@ -1,7 +1,14 @@
 *{
     padding: 0%;
 }
-
+.icon{
+    height: 60px;
+    width: 50px;
+    position: absolute;
+}
+.brand-logo{
+    margin-left: 20px;
+}
 body{
     /*background: url(http://i46.tinypic.com/25hkajb.jpg);
     background-position:top;*/

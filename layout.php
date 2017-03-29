@@ -5,6 +5,8 @@
     <link type="text/css" rel="stylesheet" href="./css/materialize.min.css"  media="screen,projection"/>
     <!-- Importcion de hoja de estilos propia -->
     <link rel="stylesheet" href="./css/stylesheet.css">
+
+    <link rel="shortcut icon" href="./images/icon.png">
 </head>
 
 <body>
@@ -13,7 +15,7 @@
         <div class="gris-1">
 
             <div class="nav-wrapper">
-              <a href="#!" class="brand-logo"><i class="material-icons">cloud</i>Logo</a>
+                <a href="#!" class="brand-logo"><img class="icon" src="./images/icon.png" alt=""></a>
               <ul class="right hide-on-med-and-down">
                 <li><a href="sass.html"><i class="material-icons">search</i></a></li>
                 <li><a href="badges.html"><i class="material-icons">view_module</i></a></li>
@@ -21,7 +23,7 @@
                 <li><a href="mobile.html"><i class="material-icons">more_vert</i></a></li>
               </ul>
             </div>
-            
+
         </div>
       </nav>
     <header>
