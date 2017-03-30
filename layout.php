@@ -23,18 +23,14 @@
                 <li><a href="mobile.html"><i class="material-icons">more_vert</i></a></li>
               </ul>
             </div>
-
         </div>
       </nav>
-    <header>
-    </header>
 
 
-
-<script type="text/javascript" src="./js/jquery-3.1.1.min.js"></script>
-<script type="text/javascript" src="./js/materialize.min.js"></script>
-</body>
 
 <footer>
-
+    <script type="text/javascript" src="./js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="./js/materialize.min.js"></script>
 </footer>
+
+</body>

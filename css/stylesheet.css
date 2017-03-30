@@ -8,6 +8,7 @@
 }
 .brand-logo{
     margin-left: 20px;
+    -webkit-filter: invert(100%); 
 }
 body{
     /*background: url(http://i46.tinypic.com/25hkajb.jpg);
