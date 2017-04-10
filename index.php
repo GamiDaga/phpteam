@@ -1,8 +1,10 @@
 <?php
-    require_once('./layout.php');
+    require_once('./layout/head.php');
  ?>
 
 <body>
+    <?php require_once('./layout/navbar.php'); ?>
+
     <div class="contenedor">
 
         <div class="parallax-container">
@@ -18,13 +20,6 @@
                 <div class="parallax"><img src="images/parallax2.jpg"></div>
         </div>
 
+<?php require_once('./layout/footer.php'); ?>
+
 </body>
-
-<footer>
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $('.parallax').parallax();
-        });
-    </script>
-
-</footer>
