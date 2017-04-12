@@ -17,6 +17,5 @@
                 </div>
             </div>
 
-
 <?php require_once('./layout/footer.php'); ?>
 </body>
