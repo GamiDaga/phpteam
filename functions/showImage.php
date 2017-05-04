@@ -11,6 +11,7 @@ require_once('./sql/query.php');
     $result mysqli_query($link, $query);
     $row = mysqli_fetch_assoc($result);
     mysqli_close($link);
+    
     // se imprime la imagen y se le avisa al navegador que lo que se está // enviando no es texto, sino que es una imagen un tipo en particularheader
     ("Content-type: ".$row['tipoimagen']);
     echo $row['contenidoimagen'];

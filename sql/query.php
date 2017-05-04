@@ -8,10 +8,10 @@ function movie(){
   }
 
 function image($id){
-    echo '<pre>'; var_dump($id); exit();
+    //echo '<pre>'; var_dump($id); exit();
 	$sql= "SELECT contenidoimagen, tipoimagen
 		FROM peliculas
-		WHERE id = $id";
+		WHERE id=$id";
 }
 
 
