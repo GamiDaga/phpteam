@@ -16,11 +16,14 @@ function pageMovies($start_from, $quantityPages){
 }
 
 function image($id){
-    //echo '<pre>'; var_dump($id); exit();
+    //var_dump($id); exit();
 	$sql= "SELECT contenidoimagen, tipoimagen
 		FROM peliculas
 		WHERE id=$id";
+<<<<<<< HEAD
+=======
 
+>>>>>>> f06374b2784d6ff6cd2758fecc1a67fd6bf567d3
     return $sql;
 }
 

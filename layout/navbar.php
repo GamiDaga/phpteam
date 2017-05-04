@@ -1,7 +1,7 @@
-<nav>
-    <div class="gris-1">
+<nav >
+    <div class="gris-1" >
 
-        <div class="nav-wrapper">
+        <div class="nav-wrapper"  >
             <a href="#!" class="brand-logo"><img class="icon" src="./images/icon.png" alt=""></a>
 
             <ul class="right">
@@ -9,7 +9,7 @@
             </ul>
 
             <ul class="right hide-on-med-and-down">
-                <div class="nav-wrapper">
+                <div class="nav-wrapper" >
                   <form>
                     <div class="input-field">
                       <input id="search" type="search" required>
@@ -23,8 +23,8 @@
             <ul id="slide-out" class="side-nav">
                 <li>
                     <div class="userView">
-                        <div class="background">
-                            <img src="./images/backgroundsidenav.png">
+                        <div class="background" >
+                            <img src="./images/backgroundsidenav.png" >
                         </div>
                         <!-- <a href="#!user"><img class="circle" src="images/yuna.jpg"></a> -->
                         <a href="#!name"><span class="white-text name">John Doe</span></a>

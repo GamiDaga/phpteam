@@ -2,7 +2,6 @@
     require_once('./sql/connect.php');
     require_once('./sql/query.php');
     require_once('./layout/head.php');
-
  ?>
 
 <body>
@@ -53,6 +52,7 @@
                     <span>
                     <?php
                         $query = movie();
+<<<<<<< HEAD
                         $result = mysqli_query($link, $query);
                         //Cuenta el número total de registros
                         $total_rows = mysqli_num_rows($result);
@@ -89,6 +89,29 @@
                 ?>
             <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
         </ul>
+=======
+                        $result = mysqli_query($link,$query);
+                        //echo "<pre>"; var_dump($result); exit();
+                        while ($row = mysqli_fetch_array($result)) {
+                          echo "<div class='row'>";
+                          echo "<img src='../functions/showImage.php?id=".$row['id']."'>" // aca va la imagen desde el sql pero misteriosamente no funiona
+                          //echo "<img src='./Carteles/el-senor-de-los-anillos-la-comunidad-del-anillo.jpg' width='300px' height='450px'>"
+
+                          ."<h3>".$row['nombre']."</h3>"
+                          ."<p>".$row['anio']."</p>"
+                          ."<p>".calificacion($row[id])."</p>"
+                          ."<p>".$row['sinopsis']."</p>";
+                        echo "<form action='./detalle.php' method='get'>
+                          <input type='hidden' name='id' value='".$row['id']."'>
+                          <button  class='btn'> Ver mas</button>
+                        </form>";
+
+                         echo "</div>";
+                        }
+                    ?>
+                    </span>
+                </div>
+>>>>>>> f06374b2784d6ff6cd2758fecc1a67fd6bf567d3
         </div>
 
     </div>

@@ -8,11 +8,12 @@
 }
 .brand-logo{
     margin-left: 20px;
-    -webkit-filter: invert(80%); 
+    -webkit-filter: invert(80%);
 }
 body{
     /*background: url(http://i46.tinypic.com/25hkajb.jpg);
     background-position:top;*/
+    background-color: grey;
 }
 
 
@@ -20,13 +21,32 @@ body{
     /*height: 10vw;*/
 }
 
-.container{
-    margin-top: 18vw;
-    /*margin-left: 2vw;*/
-    /*margin-right: 2vw;*/
-    background-color: #eee;
-}
 
 .gris-1{
     background-color: #444;
+}
+
+
+.movie-section {
+  width:100%;
+  background-color: grey;
+}
+
+.row img {
+  float: left;
+  margin:5px;
+}
+
+
+.row{
+  background-color:black;
+  color:white;
+  padding:10px;
+  overflow:auto;
+}
+
+.pelicula {
+  width:80%;
+  background-color: white;
+  margin-left:10%;
 }
