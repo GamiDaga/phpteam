@@ -1,0 +1,28 @@
+<?php
+
+
+<<<<<<< HEAD
+function movie(){
+    $sql="SELECT id, nombre, sinopsis, anio, generos_id
+            FROM peliculas";
+=======
+function pelicula(){
+    $sql="SELECT nombre, sinopsis, año, generos,
+            FROM peliculas, generos"
+>>>>>>> 4038879ee6bc75ababef0ae6bcdd1f1acd059ca5
+
+    return $sql;
+  }
+
+<<<<<<< HEAD
+function image($id){
+
+	$sql= "SELECT contenidoImagen, tipoImagen	
+		FROM espectaculos
+		WHERE idespectaculo=$id";
+}
+=======
+>>>>>>> 4038879ee6bc75ababef0ae6bcdd1f1acd059ca5
+
+
+?>
