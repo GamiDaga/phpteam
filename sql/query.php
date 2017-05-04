@@ -1,6 +1,5 @@
 <?php
 
-
 function movie(){
     $sql="SELECT id, nombre, sinopsis, anio, generos_id
             FROM peliculas";
@@ -9,10 +8,10 @@ function movie(){
   }
 
 function image($id){
-
-	$sql= "SELECT contenidoImagen, tipoImagen	
-		FROM espectaculos
-		WHERE idespectaculo=$id";
+    echo '<pre>'; var_dump($id); exit();
+	$sql= "SELECT contenidoimagen, tipoimagen
+		FROM peliculas
+		WHERE id = $id";
 }
 
 
