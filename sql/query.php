@@ -12,7 +12,17 @@ function image($id){
 	$sql= "SELECT contenidoimagen, tipoimagen
 		FROM peliculas
 		WHERE id=$id";
+
+    return $sql;
 }
+
+function movieDetail($id){
+    $sql="SELECT id, nombre, sinopsis, anio, generos_id
+            FROM peliculas
+            WHERE id=$id";
+
+    return $sql;
+  }
 
 
 ?>
