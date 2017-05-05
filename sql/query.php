@@ -31,6 +31,10 @@ function movieDetail($id){
 
     return $sql;
   }
-
-
+  function getCalifications($id){
+    $r=" SELECT calificacion
+         FROM comentarios
+         WHERE peliculas_id=$id";
+      return $r;
+  }
 ?>

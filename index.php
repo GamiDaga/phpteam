@@ -67,28 +67,35 @@
                         //Crea un bluce 'while' y define a la variable 'datos' ($row) como clave del array
                         //que mostrará los resultados por nombre
                         while($row = mysqli_fetch_assoc($result)) {
-                                    $row = mysqli_fetch_assoc($result);
-                                    echo "<span><img src='./functions/showImage.php?idMovie=".$row['id']."'></span>"
+                                    echo "<div class='row'>";
+                                    //echo "<img src='./functions/showImage.php?id=".$row['id']."'>" // aca va la imagen desde el sql pero misteriosamente no funiona
+                                    echo "<img src='./Carteles/el-senor-de-los-anillos-la-comunidad-del-anillo.jpg' width='300px' height='450px'>"
                                         ."<h3>".$row['nombre']."</h1>"
                                         ."<p>".$row['anio']."</p>"
                                         ."<p>".$row['sinopsis']."</p>";
-                                        // agregar
+                                        echo "<form action='./detalle.php' method='get'>
+                                        <input type='hidden' name='id' value='".$row['id']."'>
+                                        <button  class='btn'> Ver mas</button>
+                                        </form>";
+
+                                        echo "</div>";
                         };
                     ?>
                     </span>
                 </div>
             </div>
-
+            <div class="paginas">
             <ul class="pagination">
-                <li class="disabled"><a href=""><i class="material-icons">chevron_left</i></a></li>
-                <li class="active"><a href="?page=1">1</a></li>
+                <!-- <li class="disabled"><a href="?page="><i class="material-icons">chevron_left</i></a></li> -->
+                <li class='waves-effect' class="active"><a href="?page=1">1</a></li>
                 <?php
-                    for ($i= 1; $i < $quantityPages; $i++){
+                    for ($i= 2; $i <= $quantityPages; $i++){
                         echo "<li class='waves-effect'><a href='?page=".$i."'>".$i."</a></li>";
                     }
                 ?>
-            <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+            <!-- <li class="waves-effect"><a href= "?page="><i class="material-icons">chevron_right</i></a></li> -->
         </ul>
+        </div>
         </div>
 
     </div>

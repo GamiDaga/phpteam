@@ -6,21 +6,22 @@ require_once('../sql/query.php');
 
     $link = connect(); // se recupera la información de la imagen
 
-    //echo '<pre>'; var_dump($_GET['id']); exit();
+    //echo '<pre>'; var_dump($link); exit();
     $query = image($_GET['id']);
     //echo '<pre>'; var_dump($query); exit();
+    //echo '<pre>'; var_dump($id); exit();
+    $result=mysqli_query($link, $query);
+    //echo '<pre>'; var_dump($res); exit();
 
-    $result = mysqli_query($link, $query);
-    //echo '<pre>'; var_dump($result); exit();
-
-    $row = mysqli_fetch_assoc($result);
-     //echo '<pre>'; var_dump($row); exit();
+    $row = mysqli_fetch_array($result);
+    //echo '<pre>'; var_dump($rowb['0']); exit();
 
      mysqli_close($link);
     //echo '<pre>'; var_dump($row['contenidoimagen']); exit();
 
     // se imprime la imagen y se le avisa al navegador que lo que se está // enviando no es texto, sino que es una imagen un tipo en particular
-    header('Content-type: img'.$row['tipoimagen']);
-    //echo '<pre>'; var_dump($row['contenidoimagen']); exit();
+
+    header('Content-type: image/'.$row['tipoimagen']);
     echo $row['contenidoimagen'];
+
 ?>

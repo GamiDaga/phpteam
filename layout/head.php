@@ -4,8 +4,8 @@
     <!---->
     <link type="text/css" rel="stylesheet" href="./css/materialize.min.css"  media="screen,projection"/>
     <!-- Importcion de hoja de estilos propia -->
-    <link rel="stylesheet" href="./css/stylesheet.css">
+    <link rel="stylesheet" href="./css/sylesheet.css">
 
     <link rel="shortcut icon" href="./images/icon.png">
-    
+
 </head>

@@ -7,13 +7,13 @@ require_once('./sql/query.php');
     $link = connect(); // se recupera la información de la imagen
 
     //echo '<pre>'; var_dump($_GET['idMovie']); exit();
-    $query = image($_GET['idMovie']);
+    $query = image($_GET['id']);
     $result = mysqli_query($link, $query);
-    $row = mysqli_fetch_assoc($result);
-    echo '<pre>'; var_dump($row); exit();
+    $row = mysqli_fetch_array($result);
+    //echo '<pre>'; var_dump($row['tipoimagen']); exit();
     mysqli_close($link);
 
-    // se imprime la imagen y se le avisa al navegador que lo que se está // enviando no es texto, sino que es una imagen un tipo en particularheader
-    ("Content-type: ".$row['tipoimagen']);
-    echo $row['contenidoimagen'];
+    // se imprime la imagen y se le avisa al navegador que lo que se está // enviando no es texto, sino que es una imagen un tipo en particular
+    header("Content-type: image/jpeg".$row['tipoimagen']);
+    echo ($row['contenidoimagen']);
 ?>
