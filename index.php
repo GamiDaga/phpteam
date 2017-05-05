@@ -68,8 +68,8 @@
                         //que mostrará los resultados por nombre
                         while($row = mysqli_fetch_assoc($result)) {
                                     echo "<div class='row'>";
-                                    //echo "<img src='./functions/showImage.php?id=".$row['id']."'>" // aca va la imagen desde el sql pero misteriosamente no funiona
-                                    echo "<img src='./Carteles/el-senor-de-los-anillos-la-comunidad-del-anillo.jpg' width='300px' height='450px'>"
+                                    echo "<span class='imagen-index'><img src='./functions/showImage.php?idMovie=".$row['id']."'></span>" // aca va la imagen desde el sql pero misteriosamente no funiona
+                                    //echo "<img src='./Carteles/el-senor-de-los-anillos-la-comunidad-del-anillo.jpg' width='300px' height='450px'>"
                                         ."<h3>".$row['nombre']."</h1>"
                                         ."<p>".$row['anio']."</p>"
                                         ."<p>".$row['sinopsis']."</p>";
@@ -85,17 +85,40 @@
                 </div>
             </div>
             <div class="paginas">
-            <ul class="pagination">
-                <!-- <li class="disabled"><a href="?page="><i class="material-icons">chevron_left</i></a></li> -->
-                <li class='waves-effect' class="active"><a href="?page=1">1</a></li>
-                <?php
-                    for ($i= 2; $i <= $quantityPages; $i++){
-                        echo "<li class='waves-effect'><a href='?page=".$i."'>".$i."</a></li>";
-                    }
-                ?>
-            <!-- <li class="waves-effect"><a href= "?page="><i class="material-icons">chevron_right</i></a></li> -->
-        </ul>
-        </div>
+                <ul class="pagination">
+
+                    <?php
+                        if (isset($_GET['page'])) {
+                            $currentPage = $_GET['page'];
+                            $previousPage = $currentPage - 1;
+                            $chevron_left = '';
+                        }else{
+                            $currentPage = 1;
+                            $previousPage = "#";
+                            $chevron_left = "disabled";
+                        }
+
+                        if (isset($_GET['page']) && $_GET['page'] == $quantityPages) {
+                            $nextPage = '#';
+                            $chevron_right = "disabled";
+                        } else {
+                            $nextPage = $currentPage + 1;
+                            $chevron_right = '';
+                        }
+
+
+                        echo "<li class='".$chevron_left."'><a href='?page='".$previousPage."'><i class='material-icons'>chevron_left</i></a></li>";
+                        for ($i= 1; $i <= $quantityPages; $i++){
+                            if ($currentPage == $i) {
+                                echo "<li class='active' class='waves-effect'><a href='?page=".$i."'>".$i."</a></li>";
+                            }else{
+                                echo "<li class='waves-effect'><a href='?page=".$i."'>".$i."</a></li>";
+                            }
+                        }
+                        echo "<li class='".$chevron_right."' class='waves-effect'><a href=?page=".$nextPage."><i class='material-icons'>chevron_right</i></a></li>";
+                    ?>
+                </ul>
+            </div>
         </div>
 
     </div>

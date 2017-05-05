@@ -66,3 +66,7 @@ body{
   float:right;
   padding:10px;
 }
+.imagen-index img{
+    max-width: 300px;
+    max-height: 400px;
+}
