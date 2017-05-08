@@ -1,4 +1,3 @@
-
 <?php
 require_once('../sql/connect.php');
 require_once('../sql/query.php');
@@ -7,7 +6,7 @@ require_once('../sql/query.php');
     $link = connect(); // se recupera la información de la imagen
 
     //echo '<pre>'; var_dump($link); exit();
-    $query = image($_GET['id']);
+    $query = image($_GET['idMovie']);
     //echo '<pre>'; var_dump($query); exit();
     //echo '<pre>'; var_dump($id); exit();
     $result=mysqli_query($link, $query);
