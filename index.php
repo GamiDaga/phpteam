@@ -11,25 +11,63 @@
         $link = connect();
     ?>
 
-    <div class="contenedor">
+    <div class="contenedor ">
 
         <div class="parallax-container">
             <div class="parallax"><img src="./images/background.jpg"></div>
         </div>
 
-        <div class="section container ">
+        <div class="container">
+          <nav>
 
-          <ul class="right hide-on-med-and-down">
-              <div class="nav-wrapper" >
-                <form>
-                  <div class="input-field">
-                    <input id="search" type="search" required>
-                    <label class="label-icon" for="search">
-                        <i class="material-icons">search</i></label>
-                    <i class="material-icons">close</i>
-                  </div>
-              </form>
-          </ul>
+          <div id="filter-nav" class="nav-wrapper">
+            <form>
+                <div class="separador">
+                  <label>Ordenar por:</label>
+                  <p>
+                    <input id="nombe" type="radio" name="type-order" class="validate"/>
+                    <label for="nombe">Nombe</label>
+                  </p>
+                  <p>
+                    <input id="anio" type="radio" name="type-order" class="validate"/>
+                    <label for="anio">Año</label>
+                  </p>
+                </div>
+
+                <div class="separador">
+                  <label>Orden</label><br>
+                  <p>
+                    <input id="ascendente" type="radio" name="order" class="validate"/>
+                    <label for="ascendente">Ascendente</label>
+                  </p>
+                  <p>
+                    <input id="descendiente" type="radio" name="order" class="validate"/>
+                    <label for="descendiente">Descendiente</label>
+                  </p>
+                </div>
+
+                <div>
+                  <ul class="">
+                    <div class="input-field">
+                      <li>
+                        <input id="search" type="search"/>
+                        <label class="label-icon" for="search">
+                          <i class="material-icons">search</i></label>
+                          <i class="material-icons">close</i>
+                        </li>
+                      </div>
+                    </ul>
+                </div>
+                <div>
+                  <button type="submit" class="btn btn-submit"  name="button">Buscar</button>
+                </div>
+
+            </form>
+          </div>
+
+        </nav>
+
+        <div class="section-movie">
             <h2 class="header">Peliculas</h2>
                 <div class="movie-section">
                     <?php
@@ -96,6 +134,7 @@
                     </span>
                 </div>
             </div>
+
             <div class="paginas">
                 <ul class="pagination">
 
@@ -131,8 +170,8 @@
                     ?>
                 </ul>
             </div>
+          </div>
         </div>
-
     </div>
 
 

@@ -70,3 +70,14 @@ body{
     max-width: 300px;
     max-height: 400px;
 }
+
+.separador{
+    width: 28%;
+
+}
+
+#filter-nav{
+  height: 130%;
+  background-color: #444;
+  max-width: 130%;
+}
