@@ -17,16 +17,16 @@
             <div class="parallax"><img src="./images/background.jpg"></div>
         </div>
 
-        <div class="container">
-          <nav>
 
-          <div id="filter-nav" class="nav-wrapper">
+      <div id="filter-nav" class="nav-wrapper gris-1">
+          <nav>
             <form>
+
                 <div class="separador">
                   <label>Ordenar por:</label>
                   <p>
                     <input id="nombe" type="radio" name="type-order" class="validate"/>
-                    <label for="nombe">Nombe</label>
+                    <label for="nombe">Nombre</label>
                   </p>
                   <p>
                     <input id="anio" type="radio" name="type-order" class="validate"/>
@@ -35,7 +35,7 @@
                 </div>
 
                 <div class="separador">
-                  <label>Orden</label><br>
+                  <label>Orden</label>
                   <p>
                     <input id="ascendente" type="radio" name="order" class="validate"/>
                     <label for="ascendente">Ascendente</label>
@@ -46,7 +46,7 @@
                   </p>
                 </div>
 
-                <div>
+                <div class="separador">
                   <ul class="">
                     <div class="input-field">
                       <li>
@@ -61,11 +61,12 @@
                 <div>
                   <button type="submit" class="btn btn-submit"  name="button">Buscar</button>
                 </div>
-
             </form>
-          </div>
 
         </nav>
+    </div>
+
+    <div class="container">
 
         <div class="section-movie">
             <h2 class="header">Peliculas</h2>

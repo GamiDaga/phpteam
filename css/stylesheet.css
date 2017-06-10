@@ -71,13 +71,24 @@ body{
     max-height: 400px;
 }
 
-.separador{
-    width: 28%;
 
-}
 
 #filter-nav{
-  height: 130%;
   background-color: #444;
-  max-width: 130%;
+  width: 100%;
+}
+
+#filter-nav .separador {
+    max-height: 100px;
+    float:left;
+    margin-left: 50px;
+
+}
+#filter-nav .separador p  {
+    float:left;
+}
+
+#filter-nav .separador label  {
+    float:left;
+
 }
