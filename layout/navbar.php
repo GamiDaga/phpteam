@@ -2,7 +2,7 @@
     <div class="gris-1" >
 
         <div class="nav-wrapper"  >
-            <a href="#!" class="brand-logo"><img class="icon" src="./images/icon.png" alt=""></a>
+            <a href="./index.php" class="brand-logo"><img class="icon" src="./images/icon.png" alt=""></a>
 
             <ul class="right">
                 <li><a href="#" data-activates="slide-out" class="button-sidenav"><i class="material-icons">input</i></a></li>

@@ -7,10 +7,13 @@ function movie(){
     return $sql;
   }
 
-function pageMovies($start_from, $quantityPages){
-
+function pageMovies($start_from, $quantityPages,$orderBy = "null",$formatOrder = ""){
+    if ($orderBy == null) {
+      $orderBy = "null";
+    }
     $sql="SELECT id, nombre, sinopsis, anio, generos_id
             FROM peliculas
+            ORDER BY $orderBy $formatOrder
             LIMIT ".$start_from.",".$quantityPages;
     return $sql;
 }
