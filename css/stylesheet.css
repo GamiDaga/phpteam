@@ -92,3 +92,17 @@ body{
     float:left;
 
 }
+
+.campo{
+    overflow-x:hidden;
+    color: gray;
+}
+
+.campo-aclaracion{
+    color: gray;
+    padding-left: 1vw;
+}
+
+.formulario-registro{
+    background-color: #fff;
+}
