@@ -5,33 +5,35 @@
  ?>
 
  <body>
-     <?php
-         require_once('./layout/navbar.php');
+     <header>
+         <?php
+         require_once('./layout/header.php');
          $link = connect();
-     ?>
+         ?>
+     </header>
 
 
      <div class="contenedor ">
 
          <div class="parallax-container">
-             <div class="parallax"><img src="./
-                 images/background.jpg"></div>
+             <div class="parallax"><img src="./images/background.jpg"></div>
          </div>
 
 
 
          <div class="container">
-             <div class="row white formulario-registro">
+             <div class="row formulario-registro">
+                 <h1>Registro</h1>
 
                  <form class="col s12" action="./funciona.php" method="post">
                      <div class="row campo white">
                          <div class="input-field col s10 m5 l6">
-                             <input id="lastname" type="text" name="lastname" value="" class="validate" required>
+                             <input id="lastname" type="text" name="lastname" class="validate" required>
                              <label for="lastname">Apellido</label>
                          </div>
 
                          <div class="input-field col s10 m5 l6">
-                             <input id="document.getElementById("demo")" type="text" name="name" value="" class="validate" required>
+                             <input id="name" type="text" name="name" class="validate" required>
                              <label for="name">Nombre</label>
                          </div>
                          <div class="campo-aclaracion">
@@ -41,7 +43,7 @@
                      </div>
                      <div class="row campo white">
                          <div class="input-field col s10 m5 l6">
-                             <input id="user" type="text" name="user" value="" class="validate" required>
+                             <input id="user" type="text" name="user" class="validate" required>
                              <label for="user">Usuario</label>
                          </div>
                          <div class="campo-aclaracion">
@@ -50,7 +52,7 @@
                      </div>
                      <div class="row campo white">
                          <div class="input-field col s10 m5 l6">
-                             <input id="password" type="text" name="password" value="" class="validate" required>
+                             <input id="password" type="password" name="password" class="validate" required>
                              <label for="password1">Contraseña</label>
                          </div>
                          <div class="campo-aclaracion">
@@ -59,8 +61,8 @@
                      </div>
                      <div class="row campo white">
                          <div class="input-field col s10 m5 l6">
-                             <input id="re" type="text" name="re-password" value="" class="validate" required>
-                             <label for="re-password">Re-Contraseña</label>
+                             <input id="repassword" type="password" name="repassword" class="validate" required>
+                             <label for="repassword">Re-Contraseña</label>
                          </div>
 
                      </div>
@@ -103,7 +105,7 @@
      </div>
 
      <footer>
-         <script type="text/javascript" src='./js/phpteam.js'></script>
+         <!-- <script type="text/javascript" src='./js/phpteam.js'></script> -->
          <?php
         require_once('./layout/footer.php');
           ?>

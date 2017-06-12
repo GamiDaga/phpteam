@@ -95,6 +95,7 @@ body{
 
 .campo{
     overflow-x:hidden;
+    overflow-y:hidden;
     color: gray;
 }
 
@@ -104,5 +105,15 @@ body{
 }
 
 .formulario-registro{
+    color: #000;
     background-color: #fff;
+}
+
+.right{
+    padding-left: 1vw;
+    padding-right: 1vw;
+}
+.marco-space{
+    padding-left: 1vw;
+    padding-right: 1vw;
 }

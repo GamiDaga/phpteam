@@ -1,4 +1,3 @@
-<footer>
     <script type="text/javascript" src="./js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="./js/materialize.min.js"></script>
     <script type="text/javascript">
@@ -11,6 +10,8 @@
                 closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
                 draggable: true // Choose whether you can drag to open on touch screens
             });
+
+             $('.modal').modal();
+             $('.modal1').modal('close');
         });
         </script>
-</footer>

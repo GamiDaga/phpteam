@@ -1,15 +1,22 @@
 <?php
+    // session_start();
+    // echo "<pre>";var_dump($_SESSION['log']);exit();
+
     require_once('./sql/connect.php');
     require_once('./sql/query.php');
     require_once('./layout/head.php');
 
+
  ?>
 
  <body>
-     <?php
-         require_once('./layout/navbar.php');
+     <header>
+
+         <?php
+         require_once('./layout/header.php');
          $link = connect();
-     ?>
+         ?>
+     </header>
 
 
      <div class="contenedor ">
@@ -18,7 +25,7 @@
              <div class="parallax"><img src="./images/background.jpg"></div>
          </div>
 
-         <?php //echo "<pre>";var_dump("asd");exit(); ?>
+
              <div id="filter-nav" class="nav-wrapper gris-1">
                  <nav>
                      <form>
@@ -137,7 +144,7 @@
                                      ."<p>".$row['anio']."</p>"
                                      ."<p>".$row['sinopsis']."</p>";
                                      echo "<form action='./detalle.php' method='get'>
-                                     <input type='hidden' name='id' value='".$row['id']."'>
+                                     <input type='hidden' name='idMovie' value='".$row['id']."'>
                                      <button  class='btn'> Ver mas</button>
                                      </form>";
 
@@ -165,6 +172,7 @@
         </div>
     </div>
 
-
-<?php require_once('./layout/footer.php'); ?>
+<footer>
+    <?php require_once('./layout/footer.php'); ?>
+</footer>
 </body>

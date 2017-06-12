@@ -5,11 +5,12 @@
      require_once('./functions/functions.php');
 ?>
 <body>
-  <?php
-      require_once('./layout/navbar.php');
-      $link = connect();
-  ?>
-
+    <header>
+        <?php
+        require_once('./layout/header.php');
+        $link = connect();
+        ?>
+    </header>
 
   <div class="parallax-container">
       <div class="parallax"><img src="./images/background.jpg"></div>
@@ -18,13 +19,14 @@
 
  <div class="pelicula">
    <?php
-     $query = movieDetail($_GET['id']);
+     $query = movieDetail($_GET['idMovie']);
      $result = mysqli_query($link,$query);
      $row = mysqli_fetch_array($result);
 
      echo "<div class='row'>";
-     //echo "<img src='./functions/showImage.php?id=".$row['id']."'>" // aca va la imagen desde el sql pero misteriosamente no funiona
-     echo "<img src='./Carteles/star-wars-episode-2.jpg' width='300px' height='450px'>";
+     //echo "<img src='./functions/showImage.php?idMovie=".$_GET['idMovie']."'>" // aca va la imagen desde el sql pero misteriosamente no funiona
+     echo "<span class='imagen-index'><img src='./functions/showImage.php?idMovie=".$_GET['idMovie']."'></span>";
+     //echo "<img src='./Carteles/star-wars-episode-2.jpg' width='300px' height='450px'>";
         echo "<div class='info-pelicula'>";
         echo "<h1>".$row['nombre']."</h1>"
          //."<p>".$calif=calification($row['id'])."</p>"
@@ -35,6 +37,7 @@
    ?>
  </div>
 
-
-<?php require_once('./layout/footer.php'); ?>
+<footer>
+    <?php require_once('./layout/footer.php'); ?>
+</footer>
 </body>
