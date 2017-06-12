@@ -131,7 +131,15 @@
                                  $quantityPages= ceil($total_rows / $quantity_rows_in_page);
                                  //Realiza la consulta en el orden de ID ascendente (cambiar "id" por, por ejemplo, "nombre" o "edad", alfabéticamente, etc.)
                                  //Limitada por la cantidad de cantidad por página
-                                 $query = pageMovies($start_from, $quantity_rows_in_page, $_GET['orderBy'],$_GET['formatOrder']);
+                                 if (isset($_GET['orderBy']) && isset($_GET['formatOrder'])) {
+                                     $query = pageMovies($start_from, $quantity_rows_in_page, $_GET['orderBy'],$_GET['formatOrder']);
+                                 }elseif (isset($_GET['orderBy'])) {
+                                     $query = pageMovies($start_from, $quantity_rows_in_page, $_GET['orderBy'],null);
+                                 }elseif (isset($_GET['formatOrder'])) {
+                                     $query = pageMovies($start_from, $quantity_rows_in_page, null,$_GET['formatOrder']);
+                                 }else {
+                                     $query = pageMovies($start_from, $quantity_rows_in_page, null,null);
+                                 }
                                  //echo "<pre>";var_dump($_GET['orderBy'],$_GET['formatOrder'],$query);exit();
                                  //echo '<pre>'; var_dump($query); exit();
                                  $result = mysqli_query($link, $query);
