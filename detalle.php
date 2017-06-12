@@ -35,6 +35,47 @@
        echo  "</div>";
      echo "</div>";
    ?>
+
+
+  <div class="row"><!--  INICIO DE SECCION DE COMENTARIOS -->
+    <form > <!-- Aca seria donde el usuario escribe su comentario, nombre y apellido son los del usuario que este actualmente ingresado -->
+       <div class="col s1">
+         <p>Nombre</p>
+       </div>
+
+       <div class="col s1">
+         <p>Apellido</p>
+       </div>
+
+       <div class="input-field col s12">
+          <textarea id="comentario" class="materialize-textarea"></textarea>
+          <label for="comentario">Comentario</label>
+        </div>
+        <div class="divider col s12"></div>
+    </form> 
+
+
+    <!-- ACA EMPIEZAN LA LISTA DE COMENTARIOS QUE ESTAN EN LA BASE DE DATOS  -->
+    
+    <div class="col s8">
+      <p class="col s1">User1</p> <p class="col s1">Apellido1</p> <p class="col s1">dd/mm/yyyy</p>
+      <div>
+        <p class="col s10">Esto vendria siendo un comentario </p>
+      </div>
+    </div>
+    <div class="divider col s12"></div>
+
+    <div class="col s8">
+      <p class="col s1">User2</p> <p class="col s1">Apellido2</p> <p class="col s1">dd/mm/yyyy</p>
+      <div>
+        <p class="col s10">Esto vendria siendo otro comentario </p>
+      </div>
+    </div>
+    <div class="divider col s12"></div>
+    <!-- FIN DE LISTA DE COMENTARIOS  -->
+
+  </div> <!-- FIN DE SECCION DE COMENTARIOS -->
+
  </div>
 
 <footer>

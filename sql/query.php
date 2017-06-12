@@ -40,4 +40,11 @@ function movieDetail($id){
          WHERE peliculas_id=$id";
       return $r;
   }
+
+  function getAny($table, $field){ //Query nueva
+    $sql="SELECT $field  
+          FROM $table";
+    return $sql;
+
+  }
 ?>

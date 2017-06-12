@@ -33,13 +33,14 @@
                          <div class="separador">
                              <label>Ordenar por:</label>
                              <p>
-                                 <input id="nombe" value="nombre" type="radio" name="orderBy" class="validate"/>
+                                 <input id="nombe" value="nombre" type="radio" name="orderBy" class="validate" />
                                  <label for="nombe">Nombre</label>
                              </p>
                              <p>
                                  <input id="anio" value="anio" type="radio" name="orderBy" class="validate"/>
                                  <label for="anio">Año</label>
                              </p>
+                             
                          </div>
 
                          <div class="separador">
@@ -140,7 +141,7 @@
                                      echo "<div class='row'>";
                                      echo "<span class='imagen-index'><img src='./functions/showImage.php?idMovie=".$row['id']."'></span>" // aca va la imagen desde el sql pero misteriosamente no funiona
                                      //echo "<img src='./Carteles/el-senor-de-los-anillos-la-comunidad-del-anillo.jpg' width='300px' height='450px'>"
-                                     ."<h3>".$row['nombre']."</h1>"
+                                     ."<h1>".$row['nombre']."</h1>"
                                      ."<p>".$row['anio']."</p>"
                                      ."<p>".$row['sinopsis']."</p>";
                                      echo "<form action='./detalle.php' method='get'>
