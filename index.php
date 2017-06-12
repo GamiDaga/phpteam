@@ -1,6 +1,5 @@
 <?php
     // session_start();
-    // echo "<pre>";var_dump($_SESSION['log']);exit();
 
     require_once('./sql/connect.php');
     require_once('./sql/query.php');
@@ -14,6 +13,8 @@
 
          <?php
          require_once('./layout/header.php');
+         //echo "<pre>";var_dump('asd');exit();
+
          $link = connect();
          ?>
      </header>
@@ -40,7 +41,7 @@
                                  <input id="anio" value="anio" type="radio" name="orderBy" class="validate"/>
                                  <label for="anio">Año</label>
                              </p>
-                             
+
                          </div>
 
                          <div class="separador">
