@@ -42,9 +42,14 @@ function movieDetail($id){
   }
 
   function getAny($table, $field){ //Query nueva
-    $sql="SELECT $field  
+    $sql="SELECT $field
           FROM $table";
     return $sql;
+  }
 
+  function createMovie( $titulo, $año, $genero, $sinopsis, $image, $imageType){
+      $sql ="INSERT INTO peliculas (nombre, sinopsis, anio, generos_id, contenidoimagen, tipoimagen)
+              VALUES ($titulo, $sinopsis, $año, $genero, $image, $imageType)";
+      return $sql;
   }
 ?>

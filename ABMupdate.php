@@ -1,13 +1,15 @@
-<?php   
+<?php
      require_once('./sql/connect.php');
      require_once('./sql/query.php');
      require_once('./layout/head.php');
 ?>
 <body>
-  <?php
-      require_once('./layout/navbar.php');
-      $link = connect();
-  ?>
+    <header>
+        <?php
+        require_once('./layout/header.php');
+        $link = connect();
+        ?>
+    </header>
 
   <div class="contenedor ">
     <div class="parallax-container">
@@ -28,7 +30,7 @@
         <div class='row campo white'>
           <h5 class='col s6' >Titulo</h5> <h5 class='col s6'>Año</h5>
           <div class='input-field col s10 m5 l6'>
-            
+
             <input id='titulo' type='text' name='titulo' value='' class='validate' required>
             <label for='titulo'>". $row['nombre'] ."</label>
           </div>
@@ -40,7 +42,7 @@
 
           <h5>Genero</h5>
           <div class='input-field col s12'>
-             <select >".   
+             <select >".
 
               $table = 'generos';
               $field = '*';
@@ -48,11 +50,11 @@
               $result2 = mysqli_query($link, $query2);
 
              echo "<option value='' disabled selected> ". $row2[genero]."</option>";
-        
+
               while($row2 = mysqli_fetch_assoc($result2)) {
                  echo '<option value='.$row2[id].'>'.$row2[genero].' </option>';
                }
-            
+
             echo "</select>
          </div>
 
@@ -74,12 +76,12 @@
               <input class='file-path validate' type='text'>
             </div>
         </div>
-         
-        <div > 
+
+        <div >
           <a class='waves-effect waves-light btn col s4 offset-s4' href=''>Eliminar</a>
         </div>
 
-        </div>     
+        </div>
       </div>
      ";
      ?>
@@ -91,9 +93,9 @@
 
   <footer>
     <script type="text/javascript" src='./js/phpteam.js'></script>
-    
+
       <?php
         require_once('./layout/footer.php');
         ?>
-   </footer>    
+   </footer>
 </body>

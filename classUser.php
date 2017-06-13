@@ -13,20 +13,6 @@ class user {
     private $email;
     private $admin;
 
-    // public function constructor($row)
-    // {
-    //     echo "<pre>";var_dump($row);exit();
-    //     $this->name = $row['nombre'];
-    //     $this->lastname = $row['apellido'];
-    //     $this->userName = $row['nombreusuario'];
-    //     $this->email = $row['email'];
-    //     if ($row['administrador']) {
-    //         $this->admin = true;
-    //     }else {
-    //         $this->admin = false;
-    //     }
-    // }
-
     public function validate($userName,$password)
     {
         $link = mysqli_connect('localhost', 'root', 'root','phpteam') or die ("Error ".mysqli_error($mysqli));
@@ -108,14 +94,5 @@ class user {
         return $this->admin;
     }
 
-  public function log() //si esta logueado
-  {
-    if (!isset($_SESSION["log"])){
-
-      return true;
-    }else {
-      return false;
-    }
-  }
 }
  ?>

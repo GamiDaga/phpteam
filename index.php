@@ -73,6 +73,14 @@
                              </div>
                          </form>
 
+                         <?php
+                         if (isset($_SESSION['log']) && $_SESSION['log'] == true && $_SESSION['admin'] == true) {
+                                echo "<form action='./ABMcreate.php' method='post'>
+                                      <button  class='btn'>Crear</button>
+                                      </form>";
+                         }
+                          ?>
+
                      </nav>
                  </div>
 
@@ -157,7 +165,12 @@
                                      <input type='hidden' name='idMovie' value='".$row['id']."'>
                                      <button  class='btn'> Ver mas</button>
                                      </form>";
-
+                                     if (isset($_SESSION['log']) && $_SESSION['log'] == true && $_SESSION['admin'] == true) {
+                                            echo "<form action='./ABMupdate.php' method='post'>
+                                                  <input type='hidden' name='idMovie' value='".$row['id']."'>
+                                                  <button  class='btn'>Editar</button>
+                                                  </form>";
+                                     }
                                      echo "</div>";
                                  };
                                  ?>
@@ -170,11 +183,7 @@
 
                     <?php
                         for ($i= 1; $i <= $quantityPages; $i++){
-                            if ($currentPage == $i) {
-                                echo "<li class='active' class='waves-effect'><a href='?page=".$i.$parameter."'>".$i."</a></li>";
-                            }else{
-                                echo "<li class='waves-effect'><a href='?page=".$i.$parameter."'>".$i."</a></li>";
-                            }
+                            echo "<li class='waves-effect'><a href='?page=".$i.$parameter."'>".$i."</a></li>";
                         }
                     ?>
                 </ul>

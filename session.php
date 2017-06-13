@@ -17,11 +17,14 @@
     $_SESSION['email'] = $user->getEmail();
     $_SESSION['admin'] = $user->getAdmin();
 
-    echo "asdasd";
-
   } catch (Exception $e) {
        $_SESSION["log"] = false;
-       echo "Error al loguearse";exit();
+       echo "Error al loguearse";
+       echo "
+           <form action='./index.php' method='post'>
+               <button type='submit' name='button'>Volver al index</button>
+           </form> ";
+       exit();
   }
   header("location:./index.php");
 
