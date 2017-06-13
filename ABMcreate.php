@@ -2,12 +2,14 @@
      require_once('./sql/connect.php');
      require_once('./sql/query.php');
      require_once('./layout/head.php');
+
 ?>
 <body>
     <header>
         <?php
+        require_once('./layout/header.php');       
         if (isset($_SESSION['log']) && $_SESSION['log'] == true && $_SESSION['admin'] == true) {
-        require_once('./layout/header.php');
+
         $link = connect();
         ?>
     </header>
@@ -72,6 +74,8 @@
                         </div>
                         <input type="file" name="image" value="">
                         <button type='submit' class='btn btn-submit right hide-on-med-and-down'>Crear</button>
+
+                        
                     </form>
                 </div>
             </div>
@@ -85,6 +89,7 @@
 
 
          ?>
+
 
   <footer>
       <?php

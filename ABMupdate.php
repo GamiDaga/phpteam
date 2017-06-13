@@ -6,9 +6,10 @@
 <body>
     <header>
         <?php
-        if (isset($_SESSION['log']) && $_SESSION['log'] == true && $_SESSION['admin'] == true) {
 
         require_once('./layout/header.php');
+        if (isset($_SESSION['log']) && $_SESSION['log'] == true && $_SESSION['admin'] == true) {
+
         $link = connect();
         ?>
     </header>
@@ -21,40 +22,48 @@
 
   <div class="container">
      <?php
-     $query = movieDetail($_GET['id']);
+     $query = getMovie($_POST['idMovie']);
      $result = mysqli_query($link,$query);
      $row = mysqli_fetch_array($result);
 
      echo "
      <div class='row white formulario-registro'>
-      <form class='col s12' action='' method='post'>
+      <form class='col s12' action='./ABM.php' method='post' enctype='multipart/form-data'>
+
+        <input type='hidden' name='operation' value='updateMovie'>
+        <input type='hidden' name='idMovie' value='".$_POST['idMovie']."'>
 
         <div class='row campo white'>
           <h5 class='col s6' >Titulo</h5> <h5 class='col s6'>Año</h5>
           <div class='input-field col s10 m5 l6'>
 
-            <input id='titulo' type='text' name='titulo' value='' class='validate' required>
+            <input id='titulo' type='text' name='titulo' value='". $row['nombre'] ."' class='validate' required>
             <label for='titulo'>". $row['nombre'] ."</label>
           </div>
 
           <div class='input-field col s10 m5 l6'>
-            <input id='anio' type='text' name='anio' value='' class='validate' required>
+            <input id='anio' type='text' name='anio' value='". $row['anio'] ."' class='validate' required>
             <label for='anio'>". $row['anio'] ."</label>
           </div>
 
           <h5>Genero</h5>
           <div class='input-field col s12'>
-             <select >".
+             <select name='idGenero'>>".
 
               $table = 'generos';
               $field = '*';
               $query2 = getAny($table,$field);
               $result2 = mysqli_query($link, $query2);
-
-             echo "<option value='' disabled selected> ". $row2[genero]."</option>";
+  
 
               while($row2 = mysqli_fetch_assoc($result2)) {
-                 echo '<option value='.$row2[id].'>'.$row2[genero].' </option>';
+                // echo '<option value='.$row2['id'].'>'.$row2['genero'].' </option>';
+                 if ($_POST['generos_id'] != $row2['id']){
+                    echo "<option value='".$row2['id']."'> ".$row2["genero"]." </option>";
+                  }
+                  else{
+                    echo "<option value='".$row2['id']."' selected=".$_POST['generos_id'].">".$row2["genero"]."</option>";
+                  }
                }
 
             echo "</select>
@@ -63,24 +72,31 @@
 
           <h5>Sinopsis</h5>
           <div class='input-field col s12'>
-            <textarea id='sinopsis' class='materialize-textarea'></textarea>
-            <label for='sinopsis'>". $row['sinopsis'] ."</label>
+            <textarea id='sinopsis' name='synopsis'class='materialize-textarea' value'". $row['sinopsis'] ."'>". $row['sinopsis'] ."</textarea>
+            <label for='sinopsis'>Sinopsis</label>
           </div>
 
-         <span class='imagen-index'><img src='./functions/showImage.php?idMovie=".$row['id']."'></span>
+         <span class='imagen-index col s8 offset-s4'><img src='./functions/showImage.php?idMovie=".$row['id']."'></span>
 
          <div class='file-field col s12'>
            <div class='btn'>
              <span>Poster</span>
-             <input type='file'>
-           </div>
+             <input type='file' name='image' value=''>
+           </div> 
             <div class='file-path-wrapper'>
               <input class='file-path validate' type='text'>
             </div>
         </div>
 
+         <button type='submit' class='btn btn-submit right hide-on-med-and-down'>Actualizar</button>
+
         <div >
-          <a class='waves-effect waves-light btn col s4 offset-s4' href=''>Eliminar</a>
+          <form action='./ABM.php' method='post'>
+
+            <input type='hidden' name='operation' value='deleteMovie'>
+            <input type='hidden' name='idMovie' value='".$_POST['idMovie']."'>
+            <button type='submit' class='waves-effect waves-light btn col s4 offset-s4'>Eliminar</a>
+          </form>
         </div>
 
         </div>

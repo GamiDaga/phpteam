@@ -2,6 +2,7 @@
 
 require_once('./sql/connect.php'); $link = connect();
 require_once('./sql/query.php');
+session_start();
 
 
 if (isset($_SESSION['log']) && $_SESSION['log'] == true && $_SESSION['admin'] == true) {
@@ -9,10 +10,13 @@ if (isset($_SESSION['log']) && $_SESSION['log'] == true && $_SESSION['admin'] ==
     switch ($_POST['operation']) {
 
         case 'createMovie':
+            //echo "<pre>";var_dump($_FILES['image']);exit();
 
-            $path = $_FILES['image']['name'];
+            //$path = $_FILES['image']['name'];
 
-            $ext = pathinfo($path, PATHINFO_EXTENSION);
+            //$ext = pathinfo($path, PATHINFO_EXTENSION);
+
+            $ext = $_FILES['image']['type'];
 
             $fp = fopen($_FILES['image']['tmp_name'], 'rb'); //Abrimos la imagen que viene por $_FILES
             $image = fread($fp, $_FILES['image']['size']); //Extraemos el contenido de la imagen
@@ -26,14 +30,51 @@ if (isset($_SESSION['log']) && $_SESSION['log'] == true && $_SESSION['admin'] ==
 
                 header("location:./detalle.php?idMovie=".$id);
             }else {
-                echo "<pre>";var_dump("La carga de la película no se ah realizado");exit();
+                echo "<pre>";var_dump("La carga de la película no se ha realizado");exit();
             }
         break;
 
         case 'updateMovie':
+
+            //$path = $_FILES['image']['name'];
+            //$ext = pathinfo($path, PATHINFO_EXTENSION);
+            $qimage ="";
+
+            if($_FILES['image']['tmp_name'] != '') {
+                 $ext = $_FILES['image']['type'];
+
+                 $fp = fopen($_FILES['image']['tmp_name'], 'rb'); //Abrimos la imagen que viene por $_FILES
+                 $image = fread($fp, $_FILES['image']['size']); //Extraemos el contenido de la imagen
+                 $image = addslashes($image);
+                 fclose($fp); 
+                 $qimage = ", contenidoimagen = '".$image."' , tipoimagen = ' ".$ext." ' " ;}
+
+
+            $query = updateMovie($_POST['idMovie'],$_POST['titulo'],$_POST['anio'],$_POST['idGenero'],$_POST['synopsis'],$qimage);
+            //echo "<pre>";var_dump( $query);exit();
+            $result = mysqli_query($link, $query);
+
+            //echo "<pre>";var_dump( $query);exit();
+
+
+            if ($result) {
+
+                header("location:./detalle.php?idMovie=".$_POST['idMovie']);
+            }else {
+                echo "<pre>";var_dump("La carga de la película no se ha realizado");exit();
+            }
+
         break;
 
         case 'deleteMovie':
+             $query = deleteMovie($_POST['idMovie']);
+             $result = mysqli_query($link, $query);
+             if ($result) {
+
+                header("location:./index.php");
+             }else {
+                echo "<pre>";var_dump("Error");exit();
+                 }
         break;
 
         case 'registerUser':
