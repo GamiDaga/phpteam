@@ -6,6 +6,7 @@
 <body>
     <header>
         <?php
+        if (isset($_SESSION['log']) && $_SESSION['log'] == true && $_SESSION['admin'] == true) {
         require_once('./layout/header.php');
         $link = connect();
         ?>
@@ -18,7 +19,6 @@
 
 
         <div class="container">
-
             <div class="row white formulario-registro">
                 <form class="col s12" action="./ABM.php" method="post" enctype="multipart/form-data">
 
@@ -75,6 +75,16 @@
                     </form>
                 </div>
             </div>
+        <?php }else {
+            echo "Debe estar logueado como administrador para acceder a esta pagina";
+            echo "
+                <form action='./index.php' method='post'>
+                    <button type='submit' name='button'>Volver al index</button>
+                </form> ";
+        }
+
+
+         ?>
 
   <footer>
       <?php

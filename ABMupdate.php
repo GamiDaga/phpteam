@@ -6,6 +6,8 @@
 <body>
     <header>
         <?php
+        if (isset($_SESSION['log']) && $_SESSION['log'] == true && $_SESSION['admin'] == true) {
+
         require_once('./layout/header.php');
         $link = connect();
         ?>
@@ -96,6 +98,13 @@
 
       <?php
         require_once('./layout/footer.php');
+    }else {
+        echo "Debe estar logueado como administrador para acceder a esta pagina";
+        echo "
+        <form action='./index.php' method='post'>
+        <button type='submit' name='button'>Volver al index</button>
+        </form> ";
+    }
         ?>
    </footer>
 </body>

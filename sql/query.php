@@ -47,9 +47,9 @@ function movieDetail($id){
     return $sql;
   }
 
-  function createMovie( $titulo, $año, $genero, $sinopsis, $image, $imageType){
-      $sql ="INSERT INTO peliculas (nombre, sinopsis, anio, generos_id, contenidoimagen, tipoimagen)
-              VALUES ($titulo, $sinopsis, $año, $genero, $image, $imageType)";
+  function createMovie( $titulo, $año, $idGenero, $sinopsis, $image, $imageType){
+      $sql ="INSERT INTO peliculas (id, nombre, sinopsis, anio, generos_id, contenidoimagen, tipoimagen)
+              VALUES (NULL ,'$titulo', '$sinopsis', '$año', '$idGenero', '$image', '$imageType')";
       return $sql;
   }
 
@@ -67,7 +67,7 @@ function movieDetail($id){
   }
 
   function createUser($apellido, $nombre, $usuario, $contraseña, $mail){
-      $sql =" INSERT INTO usuarios (nombre, email, password, nombre, apellido) 
+      $sql =" INSERT INTO usuarios (nombre, email, password, nombre, apellido)
       VALUES ($nombre, $apellido, $mail, $contraseña, $apellido)";
       return $sql;
   }
