@@ -2,12 +2,12 @@
      require_once('./sql/connect.php');
      require_once('./sql/query.php');
      require_once('./layout/head.php');
-?>
+     ?>
 <body>
     <header>
         <?php
-        if (isset($_SESSION['log']) && $_SESSION['log'] == true && $_SESSION['admin'] == true) {
         require_once('./layout/header.php');
+        if (isset($_SESSION['log']) && $_SESSION['log'] == true && $_SESSION['admin'] == true) {
         $link = connect();
         ?>
     </header>
@@ -27,21 +27,21 @@
                     <div class="row campo white">
                         <div class="input-field col s10 m5 l6">
 
-                            <input id="titulo" type="text" name="titulo" value="" class="validate" required>
+                            <input id="titulo" type="text" name="title" value="asdasdasdasd" class="validate" required>
                             <label for="titulo">Titulo</label>
                         </div>
 
                         <div class="input-field col s10 m5 l6">
-                            <input id="anio" type="text" name="anio" value="" class="validate" required>
-                            <label for="anio">Año</label>
+                            <input id="year" type="text" name="year" value="" class="validate" required>
+                            <label for="year">Año</label>
                         </div>
 
 
                         <div class="input-field col s12">
                             <?php
-                            $table = 'generos';
                             $field = '*';
-                            $query = getAny($table,$field);
+                            $table = 'generos';
+                            $query = getAny($field,$table);
                             $result = mysqli_query($link, $query);
                             ?>
 
@@ -52,7 +52,7 @@
                                     echo "<option value='".$row[id]."'>".$row[genero]." </option>";
                                 };
                                 ?>
-                                <label>Materialize Select</label>
+                                <label>Select</label>
                             </select>
                         </div>
 

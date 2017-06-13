@@ -1,6 +1,5 @@
 <?php
   require_once("./classUser.php");
-  $user = new user;
 
   try {
 
@@ -8,9 +7,11 @@
     $password = htmlspecialchars($_POST["password"],ENT_QUOTES);   //para evitar sql injection
 
 
+    $user = new user;
     $user->validate($userName, $password);
     session_start();
     $_SESSION['log'] = true;
+    $_SESSION['id'] = $user->getId();
     $_SESSION['name'] = $user->getName();
     $_SESSION['lastname'] = $user->getLastname();
     $_SESSION['userName'] = $user->getUserName();
@@ -22,7 +23,7 @@
        echo "Error al loguearse";
        echo "
            <form action='./index.php' method='post'>
-               <button type='submit' name='button'>Volver al index</button>
+               <button type='submit' name=''>Volver al index</button>
            </form> ";
        exit();
   }

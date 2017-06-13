@@ -1,8 +1,8 @@
 <?php
-    // session_start();
 
     require_once('./sql/connect.php');
     require_once('./sql/query.php');
+    //echo "<pre>";var_dump('asd');exit();
     require_once('./layout/head.php');
 
 

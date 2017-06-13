@@ -3,7 +3,6 @@
 function movie(){
     $sql="SELECT id, nombre, sinopsis, anio, generos_id
             FROM peliculas";
-
     return $sql;
   }
 
@@ -31,17 +30,17 @@ function movieDetail($id){
     $sql="SELECT id, nombre, sinopsis, anio, generos_id
             FROM peliculas
             WHERE id=$id";
-
     return $sql;
   }
+
   function getCalifications($id){
-    $r=" SELECT calificacion
+    $sql=" SELECT calificacion
          FROM comentarios
          WHERE peliculas_id=$id";
-      return $r;
+      return $sql;
   }
 
-  function getAny($table, $field){ //Query nueva
+  function getAny($field,$table){ //Query nueva
     $sql="SELECT $field
           FROM $table";
     return $sql;
@@ -53,7 +52,7 @@ function movieDetail($id){
       return $sql;
   }
 
-  function updateMovie($id, $titulo, $año, $genero, $sinopsis, $image, $imageType ){
+  function updateMovie($id, $titulo, $año, $genero, $sinopsis, $image, $imageType){
       $sql ="UPDATE peliculas
       SET nombre= $titulo, sinopsis=$sinopsis, año= $año, generos_id=$genero, contenidoimagen=$imagen, tipoimangen = $imageType
       WHERE id= $id";
@@ -68,7 +67,28 @@ function movieDetail($id){
 
   function createUser($apellido, $nombre, $usuario, $contraseña, $mail){
       $sql =" INSERT INTO usuarios (nombre, email, password, nombre, apellido)
-      VALUES ($nombre, $apellido, $mail, $contraseña, $apellido)";
+      VALUES ('$nombre', '$apellido', '$mail', '$contraseña', '$apellido')";
       return $sql;
   }
+
+  function getComments($idMovie){
+    $sql=" SELECT *
+         FROM comentarios
+         WHERE peliculas_id=$idMovie";
+      return $sql;
+  }
+
+
+  function addComments($userId,$idMovie,$date,$comments,$score){
+      $sql =" INSERT INTO comentarios (comentario, fecha, peliculas_id, usuarios_id, calificacion)
+      VALUES ('$comments', '$date', '$idMovie', '$userId', '$score')";
+      return $sql;
+  }
+  function getUser($id){
+      $sql="SELECT *
+              FROM usuarios
+              WHERE id=$id";
+
+      return $sql;
+    }
 ?>

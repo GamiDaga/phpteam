@@ -1,8 +1,8 @@
 <?php
-     require_once('./sql/connect.php');
-     require_once('./sql/query.php');
-     require_once('./layout/head.php');
-     require_once('./functions/functions.php');
+require_once('./sql/connect.php');
+require_once('./sql/query.php');
+require_once('./layout/head.php');
+require_once('./functions/functions.php');
 ?>
 <body>
     <header>
@@ -12,73 +12,128 @@
         ?>
     </header>
 
-  <div class="parallax-container">
-      <div class="parallax"><img src="./images/background.jpg"></div>
-  </div>
+    <div class="parallax-container">
+        <div class="parallax"><img src="./images/background.jpg"></div>
+    </div>
 
+    <div class="contenedor">
+        <div class="pelicula">
+            <?php
+            $query = movieDetail($_GET['idMovie']);
+            $result = mysqli_query($link,$query);
+            $row = mysqli_fetch_array($result);
 
- <div class="pelicula">
-   <?php
-     $query = movieDetail($_GET['idMovie']);
-     $result = mysqli_query($link,$query);
-     $row = mysqli_fetch_array($result);
-
-     echo "<div class='row'>";
-     //echo "<img src='./functions/showImage.php?idMovie=".$_GET['idMovie']."'>" // aca va la imagen desde el sql pero misteriosamente no funiona
-     echo "<span class='imagen-index'><img src='./functions/showImage.php?idMovie=".$_GET['idMovie']."'></span>";
-     //echo "<img src='./Carteles/star-wars-episode-2.jpg' width='300px' height='450px'>";
-        echo "<div class='info-pelicula'>";
-        echo "<h1>".$row['nombre']."</h1>"
-         //."<p>".$calif=calification($row['id'])."</p>"
-         ."<p>".$row['anio']."</p>"
-         ."<p>".$row['sinopsis']."</p>";
-       echo  "</div>";
-     echo "</div>";
-   ?>
-
-
-  <div class="row"><!--  INICIO DE SECCION DE COMENTARIOS -->
-    <form > <!-- Aca seria donde el usuario escribe su comentario, nombre y apellido son los del usuario que este actualmente ingresado -->
-       <div class="col s1">
-         <p>Nombre</p>
-       </div>
-
-       <div class="col s1">
-         <p>Apellido</p>
-       </div>
-
-       <div class="input-field col s12">
-          <textarea id="comentario" class="materialize-textarea"></textarea>
-          <label for="comentario">Comentario</label>
+            echo "
+            <div class='row'>
+                <span class='imagen-index'><img src='./functions/showImage.php?idMovie=".$row['id']."'></span>
+                <div class='info-pelicula'>
+                    <h1>".$row['nombre']."</h1>
+                    <p>".$row['anio']."</p>
+                    <p>".$row['sinopsis']."</p>
+                </div>
+            </div>
+            ";
+            // ."<p>".$calif=calification($row['id'])."</p>"
+            ?>
         </div>
-        <div class="divider col s12"></div>
-    </form> 
+
+            <!--  INICIO DE SECCION DE COMENTARIOS -->
+            <div class="row">
+            <?php if (isset($_SESSION['log']) && $_SESSION['log'] == true ): ?>
+
+                    <?php
+                    echo '
+                        <p class="col">'.$_SESSION['userName'].'</p>
+                        <p class="col">'.$_SESSION['name'].'</p>
+                        <p class="col">'.$_SESSION['lastname'].'</p>
+                        <p class="col right">'.date("Y/m/d").'</p>';
+                    ?>
+
+                    <!-- Aca seria donde el usuario escribe su comentario, nombre y apellido son los del usuario que este actualmente ingresado -->
+                        <?php
+                        echo '
+                            <form class="" action="./addComments.php" method="post">
+                                <input type="hidden" name="userId" value="'.$_SESSION['id'].'">
+                                <input type="hidden" name="idMovie" value="'.$_GET['idMovie'].'">
+                                <input type="hidden" name="date" value="'.date("Y/m/d").'">
+                                <div class="input-field col right">
+                                    <select name="score">
+                                      <option  value="1">1</option>
+                                      <option  value="2">2</option>
+                                      <option  value="3">3</option>
+                                      <option  value="4">4</option>
+                                      <option  value="5">5</option>
+                                      <option  value="6">6</option>
+                                      <option  value="7">7</option>
+                                      <option  value="8">8</option>
+                                      <option  value="9">9</option>
+                                      <option  value="10">10</option>
+                                    </select>
+                                    <label>Calificacion</label>
+                                    </div>
+                                <div class="input-field col s12">
+                                    <textarea id="comments" name="comments" class="materialize-textarea"></textarea>
+                                    <label for="comments">Comentar</label>
+                                    <br>
+                                </div>
+                                <button type="submit" class="btn btn-submit right hide-on-med-and-down">Comentar</button>
+                            </form>
+                        ';
+                        ?>
+                    <div class="divider col s12">
+                    </div>
+
+                <?php else: ?>
+                    <br>
+                    <pre>Debe iniciar sesion para comentar</pre>
+                    <br>
+                <?php endif; ?>
+
+            </div>
+
+            <!-- ACA EMPIEZAN LA LISTA DE COMENTARIOS QUE ESTAN EN LA BASE DE DATOS  -->
+            <?php
+
+            $query = getAny('id, nombreusuario','usuarios');
+             //echo "<pre>";var_dump($query);exit();
+            $result = mysqli_query($link,$query);
+            while($row = mysqli_fetch_assoc($result)){
+                //echo "<pre>";var_dump($row);//exit();
+
+                $listUser[$row['id']] = $row['nombreusuario'];
+            }
 
 
-    <!-- ACA EMPIEZAN LA LISTA DE COMENTARIOS QUE ESTAN EN LA BASE DE DATOS  -->
-    
-    <div class="col s8">
-      <p class="col s1">User1</p> <p class="col s1">Apellido1</p> <p class="col s1">dd/mm/yyyy</p>
-      <div>
-        <p class="col s10">Esto vendria siendo un comentario </p>
-      </div>
+            $query = getComments($_GET['idMovie']);
+            // echo "<pre>";var_dump($query);//exit();
+            $result = mysqli_query($link,$query);
+            //echo "<pre>";var_dump($result);//exit();
+            while($row = mysqli_fetch_assoc($result)){
+                //echo "<pre>";var_dump($row);//exit();
+                echo '
+                <div class="row">
+                    <div class="col s8">
+                        <div class="data">
+
+                                <p class="col"> Id:'.$row['id'].'</p>
+                                <p class="col">'.$listUser[$row['usuarios_id']].'</p>
+                                <p class="col">'.$row['lastname'].'</p>
+                                <p class="col right">'.$row['fecha'].'</p>
+                        </div>
+                        <div>
+                            <p class="col s10">'.$row['comentario'].' </p>
+                        </div>
+                    </div>
+                    <div class="divider col s12">
+                    </div>
+                </div>
+                ';
+             } ?>
+            <!-- FIN DE LISTA DE COMENTARIOS  -->
+            <!-- FIN DE SECCION DE COMENTARIOS -->
     </div>
-    <div class="divider col s12"></div>
 
-    <div class="col s8">
-      <p class="col s1">User2</p> <p class="col s1">Apellido2</p> <p class="col s1">dd/mm/yyyy</p>
-      <div>
-        <p class="col s10">Esto vendria siendo otro comentario </p>
-      </div>
-    </div>
-    <div class="divider col s12"></div>
-    <!-- FIN DE LISTA DE COMENTARIOS  -->
-
-  </div> <!-- FIN DE SECCION DE COMENTARIOS -->
-
- </div>
-
-<footer>
-    <?php require_once('./layout/footer.php'); ?>
-</footer>
+    <footer>
+        <?php require_once('./layout/footer.php'); ?>
+    </footer>
 </body>

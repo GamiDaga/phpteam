@@ -6,9 +6,9 @@
 <body>
     <header>
         <?php
+        require_once('./layout/header.php');
         if (isset($_SESSION['log']) && $_SESSION['log'] == true && $_SESSION['admin'] == true) {
 
-        require_once('./layout/header.php');
         $link = connect();
         ?>
     </header>
@@ -46,9 +46,9 @@
           <div class='input-field col s12'>
              <select >".
 
-              $table = 'generos';
               $field = '*';
-              $query2 = getAny($table,$field);
+              $table = 'generos';
+              $query2 = getAny($field,$table);
               $result2 = mysqli_query($link, $query2);
 
              echo "<option value='' disabled selected> ". $row2[genero]."</option>";

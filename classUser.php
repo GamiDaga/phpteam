@@ -6,14 +6,14 @@ require_once('./sql/connect.php');
  *
  */
 class user {
-
+    private $id;
     private $name;
     private $lastname;
     private $userName;
     private $email;
     private $admin;
 
-    public function validate($userName,$password)
+    public function validate($userName,$password) //valida y construye el obj user
     {
         $link = mysqli_connect('localhost', 'root', 'root','phpteam') or die ("Error ".mysqli_error($mysqli));
         $query="SELECT *
@@ -29,6 +29,7 @@ class user {
         if (mysqli_num_rows($result)) {
             $row = mysqli_fetch_assoc($result);
             // echo "<pre>";var_dump($row);exit();
+            $this->id = $row['id'];
             $this->name = $row['nombre'];
             $this->lastname = $row['apellido'];
             $this->userName = $row['nombreusuario'];
@@ -42,6 +43,11 @@ class user {
         }else {
           throw new Exception("Error Log", 0);
         }
+    }
+
+    public function setId($value)
+    {
+        $this->id = $value;
     }
 
     public function setName($value)
@@ -67,6 +73,11 @@ class user {
     public function setAdmin($value)
     {
         $this->admin = $value;
+    }
+
+    public function getId()
+    {
+        return $this->id;
     }
 
     public function getName()
