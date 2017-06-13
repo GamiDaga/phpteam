@@ -6,9 +6,16 @@
 <body>
     <header>
         <?php
+<<<<<<< HEAD
         require_once('./layout/header.php');
         if (isset($_SESSION['log']) && $_SESSION['log'] == true && $_SESSION['admin'] == true) {
 
+=======
+
+        require_once('./layout/header.php');
+        if (isset($_SESSION['log']) && $_SESSION['log'] == true && $_SESSION['admin'] == true) {
+
+>>>>>>> 8f9685487f00fdafd09e5d85582663646a4e7c91
         $link = connect();
         ?>
     </header>
@@ -49,9 +56,9 @@
           <div class='input-field col s12'>
              <select name='idGenero'>>".
 
-              $table = 'generos';
               $field = '*';
-              $query2 = getAny($table,$field);
+              $table = 'generos';
+              $query2 = getAny($field,$table);
               $result2 = mysqli_query($link, $query2);
   
 

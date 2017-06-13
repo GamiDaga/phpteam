@@ -20,7 +20,11 @@ require_once('../sql/query.php');
 
     // se imprime la imagen y se le avisa al navegador que lo que se está // enviando no es texto, sino que es una imagen un tipo en particular
 
+<<<<<<< HEAD
+    header('Content-type: '.$row['tipoimagen']);
+=======
     header('Content-type:'.$row['tipoimagen']);
+>>>>>>> 8f9685487f00fdafd09e5d85582663646a4e7c91
     echo $row['contenidoimagen'];
 
 ?>

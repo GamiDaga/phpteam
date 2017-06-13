@@ -3,7 +3,6 @@
 function movie(){
     $sql="SELECT id, nombre, sinopsis, anio, generos_id
             FROM peliculas";
-
     return $sql;
   }
 
@@ -31,7 +30,6 @@ function movieDetail($id){
     $sql="SELECT id, nombre, sinopsis, anio, generos_id
             FROM peliculas
             WHERE id=$id";
-
     return $sql;
   }
 
@@ -54,7 +52,11 @@ function movieDetail($id){
       return $sql;
   }
 
+<<<<<<< HEAD
+  function updateMovie($id, $titulo, $año, $genero, $sinopsis, $image, $imageType){
+=======
   function updateMovie($id, $titulo, $año, $genero, $sinopsis, $image){
+>>>>>>> 8f9685487f00fdafd09e5d85582663646a4e7c91
       $sql ="UPDATE peliculas
              SET nombre = '$titulo', sinopsis ='$sinopsis', anio = '$año', generos_id ='$genero' $image
              WHERE id = '$id' ";
@@ -69,6 +71,7 @@ function movieDetail($id){
 
   function createUser($apellido, $nombre, $usuario, $contraseña, $mail){
       $sql =" INSERT INTO usuarios (nombre, email, password, nombre, apellido)
+<<<<<<< HEAD
       VALUES ('$nombre', '$apellido', '$mail', '$contraseña', '$apellido')";
       return $sql;
   }
@@ -78,13 +81,6 @@ function movieDetail($id){
          FROM comentarios
          WHERE peliculas_id=$idMovie";
       return $sql;
-}
-  function getMovie($id){
-    $sql="SELECT id, nombre, sinopsis, anio, generos_id
-            FROM peliculas
-            WHERE id=$id";
-
-    return $sql;
   }
 
 
@@ -100,4 +96,19 @@ function movieDetail($id){
 
       return $sql;
     }
+=======
+              VALUES ($nombre, $apellido, $mail, $contraseña, $apellido)";
+      return $sql;
+  }
+
+  function getMovie($id){
+    $sql="SELECT id, nombre, sinopsis, anio, generos_id
+            FROM peliculas
+            WHERE id=$id";
+
+    return $sql;
+  }
+
+
+>>>>>>> 8f9685487f00fdafd09e5d85582663646a4e7c91
 ?>
