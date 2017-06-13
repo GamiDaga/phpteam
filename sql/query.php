@@ -52,4 +52,23 @@ function movieDetail($id){
               VALUES ($titulo, $sinopsis, $año, $genero, $image, $imageType)";
       return $sql;
   }
+
+  function updateMovie($id, $titulo, $año, $genero, $sinopsis, $image, $imageType ){
+      $sql ="UPDATE peliculas
+      SET nombre= $titulo, sinopsis=$sinopsis, año= $año, generos_id=$genero, contenidoimagen=$imagen, tipoimangen = $imageType
+      WHERE id= $id";
+      return $sql;
+  }
+
+  function deleteMovie($id){
+      $sql ="DELETE FROM peliculas
+      WHERE id=$id ";
+      return $sql;
+  }
+
+  function createUser($apellido, $nombre, $usuario, $contraseña, $mail){
+      $sql =" INSERT INTO usuarios (nombre, email, password, nombre, apellido) 
+      VALUES ($nombre, $apellido, $mail, $contraseña, $apellido)";
+      return $sql;
+  }
 ?>
