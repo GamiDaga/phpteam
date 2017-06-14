@@ -20,14 +20,14 @@ if (isset($_SESSION['log']) && $_SESSION['log'] == true && $_SESSION['admin'] ==
             $image = addslashes($image);
             fclose($fp);
 
-            $query = createMovie($_POST['titulo'],$_POST['anio'],$_POST['idGenero'],$_POST['synopsis'],$image,$ext);
+            $query = createMovie($_POST['title'],$_POST['year'],$_POST['idGenero'],$_POST['synopsis'],$image,$ext);
             $result = mysqli_query($link, $query);
             if ($result) {
                 $id = mysqli_insert_id($link);
 
                 header("location:./detalle.php?idMovie=".$id);
             }else {
-                echo "<pre>";var_dump("La carga de la película no se ah realizado");exit();
+                echo "<pre>";var_dump("La carga de la película no se ha realizado");exit();
             }
         break;
 

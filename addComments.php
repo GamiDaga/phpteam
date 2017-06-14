@@ -6,9 +6,10 @@ require_once('./sql/query.php');
     //echo "<pre>";var_dump($query);exit();
 
     $result = mysqli_query($link, $query);
+    //echo "<pre>";var_dump($result);exit();
     if ($result) {
         header("location:./detalle.php?idMovie=".$_POST['idMovie']);
     }else {
-        echo "<pre>";var_dump("El comentario no se ah realizado");exit();
+        echo "<pre>";var_dump("El comentario no se ha realizado");exit();
     }
 ?>

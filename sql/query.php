@@ -7,12 +7,13 @@ function movie(){
     return $sql;
   }
 
-function pageMovies($start_from, $quantityPages,$orderBy = "null",$formatOrder = ""){
+function pageMovies($start_from, $quantityPages,$orderBy = "null",$formatOrder = "", $search=""){
     if ($orderBy == null) {
       $orderBy = "null";
     }
     $sql="SELECT id, nombre, sinopsis, anio, generos_id
             FROM peliculas
+            WHERE nombre LIKE '%$search%'
             ORDER BY $orderBy $formatOrder
             LIMIT ".$start_from.",".$quantityPages;
     return $sql;
@@ -37,8 +38,8 @@ function movieDetail($id){
 
   function getCalifications($id){
     $sql=" SELECT calificacion
-         FROM comentarios
-         WHERE peliculas_id=$id";
+           FROM comentarios
+           WHERE peliculas_id=$id";
       return $sql;
   }
 

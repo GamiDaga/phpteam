@@ -28,7 +28,7 @@ require_once('./functions/functions.php');
                 <span class='imagen-index'><img src='./functions/showImage.php?idMovie=".$row['id']."'></span>
                 <div class='info-pelicula'>
                     <h1>".$row['nombre']."</h1>
-                    <p>".$row['anio']."</p>
+                    <p>".$row['anio'],' ', calification($row['id'])."</p>
                     <p>".$row['sinopsis']."</p>
                 </div>
             </div>
@@ -50,7 +50,7 @@ require_once('./functions/functions.php');
                     ?>
 
                     <!-- Aca seria donde el usuario escribe su comentario, nombre y apellido son los del usuario que este actualmente ingresado -->
-                        <?php
+                        <?php 
                         echo '
                             <form class="" action="./addComments.php" method="post">
                                 <input type="hidden" name="userId" value="'.$_SESSION['id'].'">
@@ -63,11 +63,7 @@ require_once('./functions/functions.php');
                                       <option  value="3">3</option>
                                       <option  value="4">4</option>
                                       <option  value="5">5</option>
-                                      <option  value="6">6</option>
-                                      <option  value="7">7</option>
-                                      <option  value="8">8</option>
-                                      <option  value="9">9</option>
-                                      <option  value="10">10</option>
+
                                     </select>
                                     <label>Calificacion</label>
                                     </div>
