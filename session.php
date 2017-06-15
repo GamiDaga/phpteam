@@ -1,5 +1,6 @@
 <?php
-  require_once("./classUser.php");
+    require_once("./layout/head.php");
+    require_once("./classUser.php");
 
   try {
 
@@ -21,10 +22,8 @@
   } catch (Exception $e) {
        $_SESSION["log"] = false;
        echo "Error al loguearse";
-       echo "
-           <form action='./index.php' method='post'>
-               <button type='submit' name=''>Volver al index</button>
-           </form> ";
+       echo "<a class='btn' href='./index.php'>Volver al index</a>";
+
        exit();
   }
   header("location:./index.php");

@@ -35,14 +35,25 @@ function validate(){
     }
 
     //Validamos un campo de texto como email
-    if ((regexp.test(document.getElementById('email').value) == 0) || (document.getElementById('email').value.length == 0)){
+    if ( ((regexp.test(document.getElementById('email').value) == 0) || (document.getElementById('email').value.length == 0)) ){
         alert("El campo Email no coincide con lo esperado. Modifiquelo y vuelva a intentar.");
         return 0;
-    } else {
-        var c_email=true;
     }
+    // else {
+    //     var c_email=true;
+    // }
 
     //Si todos los campos han validado correctamente, se envía el formulario
+    document.form.submit();
+}
+
+function validateComments() {
+
+    if ( (document.getElementById('comments').value.length == 0) || (document.getElementById('comments').value.length > 255) ){
+        alert("El campo Email no coincide con lo esperado. Modifiquelo y vuelva a intentar.");
+        return 0;
+    }
+    document.getElementById('comments').setAttribute('value',string(document.getElementById('comments')));
     document.form.submit();
 }
 

@@ -14,7 +14,7 @@ if (isset($_SESSION['log']) && $_SESSION['log'] == true && $_SESSION['admin'] ==
 
             // $path = $_FILES['image']['name'];
             // $ext = pathinfo($path, PATHINFO_EXTENSION);
-            $ext = $_FILES['image']['type'];    
+            $ext = $_FILES['image']['type'];
             $fp = fopen($_FILES['image']['tmp_name'], 'rb'); //Abrimos la imagen que viene por $_FILES
             $image = fread($fp, $_FILES['image']['size']); //Extraemos el contenido de la imagen
             $image = addslashes($image);
@@ -43,7 +43,7 @@ if (isset($_SESSION['log']) && $_SESSION['log'] == true && $_SESSION['admin'] ==
                  $fp = fopen($_FILES['image']['tmp_name'], 'rb'); //Abrimos la imagen que viene por $_FILES
                  $image = fread($fp, $_FILES['image']['size']); //Extraemos el contenido de la imagen
                  $image = addslashes($image);
-                 fclose($fp); 
+                 fclose($fp);
                  $qimage = ", contenidoimagen = '".$image."' , tipoimagen = ' ".$ext." ' " ;}
 
 
@@ -75,6 +75,12 @@ if (isset($_SESSION['log']) && $_SESSION['log'] == true && $_SESSION['admin'] ==
         break;
 
         case 'registerUser':
+            if (($_POST['lastname'] != "") && ($_POST['name'] != "") && ($_POST['user'] != "") && ($_POST['password'] != "") && ($_POST['repassword'] != "") && ($_POST['email'] != "") &&  ($_POST['password'] == $_POST['repassword'])) {
+                $query = register($_POST['lastname'],$_POST['name'],$_POST['user'],$_POST['password'], $_POST['email'])
+            }else {
+
+            }
+            $_POST['lastname'],$_POST['name'],$_POST['user'],$_POST['password'],$_POST['repassword']
         break;
 
         default:

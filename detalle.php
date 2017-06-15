@@ -27,8 +27,8 @@ require_once('./functions/functions.php');
                 <span class='imagen-index'><img src='./functions/showImage.php?idMovie=".$row['id']."'></span>
                 <div class='info-pelicula'>
                     <h1>".$row['nombre']."</h1>
-                    <div class='right'>
-                    <p>".calification($row['id'])."
+                    <div class='score right'>
+                    <p>".number_format(calification($row['id']), 2, ".", ",")."
                     <i class='material-icons'>star rate</i></p>
                     </div>
                     <p>".$row['anio']."</p>
@@ -48,37 +48,44 @@ require_once('./functions/functions.php');
 
                     <?php
                     echo '
+
+                    <div class="">
                         <p class="col">'.$_SESSION['userName'].'</p>
                         <p class="col">'.$_SESSION['name'].'</p>
-                        <p class="col">'.$_SESSION['lastname'].'</p>
-                        <p class="col right">'.date("Y/m/d").'</p>';
+                        <p class="col right">'.date("Y/m/d").'</p>
+                    </div>
+                    ';
                     ?>
 
                     <!-- Aca seria donde el usuario escribe su comentario, nombre y apellido son los del usuario que este actualmente ingresado -->
                         <?php
                         echo '
+
+                        <div class="row">
                             <form class="" action="./addComments.php" method="post">
                                 <input type="hidden" name="userId" value="'.$_SESSION['id'].'">
                                 <input type="hidden" name="idMovie" value="'.$_GET['idMovie'].'">
                                 <input type="hidden" name="date" value="'.date("Y/m/d").'">
                                 <div class="input-field col right">
+                                <i class="material-icons">star rate</i>
                                     <select name="score">
                                       <option class="calification" value="1">1</option>
                                       <option class="calification" value="2">2</option>
                                       <option class="calification" value="3">3</option>
                                       <option class="calification" value="4">4</option>
                                       <option class="calification" value="5">5</option>
-
                                     </select>
                                     <label>Calificacion</label>
                                     </div>
+                                    <br>
                                 <div class="input-field col s12">
-                                    <textarea id="comments" name="comments" class="materialize-textarea required"></textarea>
+                                    <textarea id="comments" tipe="text" name="comments" class="materialize-textarea" maxlength="255" required"></textarea>
                                     <label for="comments">Comentar</label>
                                     <br>
                                 </div>
-                                <button type="submit" class="btn btn-submit right hide-on-med-and-down">Comentar</button>
+                                <input type="submit" value="Comentar" class="btn btn-submit right hide-on-med-and-down" onclick="validateComments()">    
                             </form>
+                        </div>
                         ';
                         ?>
                     <div class="divider col s12">
@@ -117,13 +124,17 @@ require_once('./functions/functions.php');
                         <div class="data">
 
                                 <p class="col"> Id:'.$row['id'].'</p>
+
                                 <p class="col">'.$listUser[$row['usuarios_id']].'</p>
-                                <p class="col">'.$row['lastname'].'</p>
                                 <p class="col right">'.$row['fecha'].'</p>
+                                <p class="col right">'.$row['calificacion'].'
+                                <i class="material-icons">star rate</i></p>
                         </div>
                         <div>
-                            <p class="col s10">'.$row['comentario'].' </p>
+                            <p class=" col s10">'.$row['comentario'].' </p>
                         </div>
+
+                        </p>
                     </div>
                     <div class="divider col s12">
                     </div>
@@ -135,6 +146,8 @@ require_once('./functions/functions.php');
     </div>
 
     <footer>
+        <script type="text/javascript" src='./js/functions.js'></script>
+
         <?php require_once('./layout/footer.php'); ?>
     </footer>
 </body>

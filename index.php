@@ -31,30 +31,30 @@
                  <nav>
                      <form action="./index.php" methode="get">
 
-                         <div class="separador">
-                             <label>Ordenar por:</label>
-                             <p>
+                         <ul id="separador1" class="separador">
+                             <li><label for="separador1">Ordenar por:</label></li>
+                             <li>
                                  <input id="nombe" value="nombre" type="radio" name="orderBy" class="validate" />
                                  <label for="nombe">Nombre</label>
-                             </p>
-                             <p>
+                             </li>
+                             <li>
                                  <input id="anio" value="anio" type="radio" name="orderBy" class="validate"/>
                                  <label for="anio">Año</label>
-                             </p>
+                             </li>
 
-                         </div>
+                         </ul>
 
-                         <div class="separador">
-                             <label>Orden</label>
-                             <p>
+                         <ul id="separador" class="separador">
+                             <li>
                                  <input id="ascendente" value="ASC" type="radio" name="formatOrder" class="validate"/>
                                  <label for="ascendente">Ascendente</label>
-                             </p>
-                             <p>
+                             </li>
+                             <li>
                                  <input id="descendiente" value="DESC" type="radio" name="formatOrder" class="validate"/>
                                  <label for="descendiente">Descendiente</label>
-                             </p>
-                         </div>
+                             </li>
+                             <label for="separador">Orden</label>
+                         </ul>
 
                          <div class="separador">
                              <ul class="">
@@ -68,9 +68,28 @@
                                      </div>
                                  </ul>
                              </div>
+                             <div class="filter-year col">
+                                 <?php
+                                 $query = getYear();
+                                 $result = mysqli_query($link,$query);
+                                //  echo "<pre>";var_dump($result);
+                                 $ult = 0;
+
+                                 echo '<select class="col s4" name="year">';
+                                 while ($row = mysqli_fetch_array($result)) {
+                                     //echo "<pre>";var_dump($row);
+                                     if ($row['anio'] > $ult) {
+                                         echo '<option class="" value="'.$row['anio'].'">'.$row['anio'].'</option>';
+                                         $ult = $row['anio'];
+                                     }
+                                 }
+                                 echo '</select> ';
+                                 ?>
+                             </div>
                              <div>
                                  <button type="submit" class="btn btn-submit">Buscar</button>
                              </div>
+
                          </form>
 
                          <?php

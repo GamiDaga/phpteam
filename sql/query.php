@@ -68,9 +68,9 @@ function movieDetail($id){
       return $sql;
   }
 
-  function createUser($apellido, $nombre, $usuario, $contraseña, $mail){
+  function register($apellido, $nombre, $usuario, $contraseña, $email){
       $sql =" INSERT INTO usuarios (nombre, email, password, nombre, apellido)
-      VALUES ('$nombre', '$apellido', '$mail', '$contraseña', '$apellido')";
+      VALUES ('$nombre', '$apellido', '$email', '$contraseña', '$apellido')";
       return $sql;
   }
 
@@ -100,5 +100,14 @@ function movieDetail($id){
               WHERE id=$id";
 
       return $sql;
+    }
+
+    function getYear()
+    {
+        $sql = "SELECT anio
+                FROM peliculas
+                ORDER BY anio ASC";
+
+        return $sql;
     }
 ?>
