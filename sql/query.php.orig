@@ -3,15 +3,17 @@
 function movie(){
     $sql="SELECT id, nombre, sinopsis, anio, generos_id
             FROM peliculas";
+
     return $sql;
   }
 
-function pageMovies($start_from, $quantityPages,$orderBy = "null",$formatOrder = ""){
+function pageMovies($start_from, $quantityPages,$orderBy = "null",$formatOrder = "", $search=""){
     if ($orderBy == null) {
       $orderBy = "null";
     }
     $sql="SELECT id, nombre, sinopsis, anio, generos_id
             FROM peliculas
+            WHERE nombre LIKE '%$search%'
             ORDER BY $orderBy $formatOrder
             LIMIT ".$start_from.",".$quantityPages;
     return $sql;
@@ -30,13 +32,14 @@ function movieDetail($id){
     $sql="SELECT id, nombre, sinopsis, anio, generos_id
             FROM peliculas
             WHERE id=$id";
+
     return $sql;
   }
 
   function getCalifications($id){
     $sql=" SELECT calificacion
-         FROM comentarios
-         WHERE peliculas_id=$id";
+           FROM comentarios
+           WHERE peliculas_id=$id";
       return $sql;
   }
 
@@ -52,11 +55,7 @@ function movieDetail($id){
       return $sql;
   }
 
-<<<<<<< HEAD
-  function updateMovie($id, $titulo, $año, $genero, $sinopsis, $image, $imageType){
-=======
   function updateMovie($id, $titulo, $año, $genero, $sinopsis, $image){
->>>>>>> 8f9685487f00fdafd09e5d85582663646a4e7c91
       $sql ="UPDATE peliculas
              SET nombre = '$titulo', sinopsis ='$sinopsis', anio = '$año', generos_id ='$genero' $image
              WHERE id = '$id' ";
@@ -81,6 +80,13 @@ function movieDetail($id){
          FROM comentarios
          WHERE peliculas_id=$idMovie";
       return $sql;
+}
+  function getMovie($id){
+    $sql="SELECT id, nombre, sinopsis, anio, generos_id
+            FROM peliculas
+            WHERE id=$id";
+
+    return $sql;
   }
 
 

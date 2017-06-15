@@ -7,12 +7,13 @@ function movie(){
     return $sql;
   }
 
-function pageMovies($start_from, $quantityPages,$orderBy = "null",$formatOrder = ""){
+function pageMovies($start_from, $quantityPages,$orderBy = "null",$formatOrder = "", $search=""){
     if ($orderBy == null) {
       $orderBy = "null";
     }
     $sql="SELECT id, nombre, sinopsis, anio, generos_id
             FROM peliculas
+            WHERE nombre LIKE '%$search%'
             ORDER BY $orderBy $formatOrder
             LIMIT ".$start_from.",".$quantityPages;
     return $sql;
@@ -37,8 +38,8 @@ function movieDetail($id){
 
   function getCalifications($id){
     $sql=" SELECT calificacion
-         FROM comentarios
-         WHERE peliculas_id=$id";
+           FROM comentarios
+           WHERE peliculas_id=$id";
       return $sql;
   }
 
@@ -67,9 +68,9 @@ function movieDetail($id){
       return $sql;
   }
 
-  function createUser($apellido, $nombre, $usuario, $contraseña, $mail){
+  function register($apellido, $nombre, $usuario, $contraseña, $email){
       $sql =" INSERT INTO usuarios (nombre, email, password, nombre, apellido)
-      VALUES ('$nombre', '$apellido', '$mail', '$contraseña', '$apellido')";
+      VALUES ('$nombre', '$apellido', '$email', '$contraseña', '$apellido')";
       return $sql;
   }
 
@@ -99,5 +100,14 @@ function movieDetail($id){
               WHERE id=$id";
 
       return $sql;
+    }
+
+    function getYear()
+    {
+        $sql = "SELECT anio
+                FROM peliculas
+                ORDER BY anio ASC";
+
+        return $sql;
     }
 ?>

@@ -68,7 +68,7 @@
                      </div>
                      <div class="row campo white">
                          <div class="input-field col s10 m10 l10 inline">
-                             <input id="email" type="email" class="validate">
+                             <input id="email" type="email" name="email" class="validate">
                              <label for="email" data-error="wrong" data-success="right">Email</label>
                          </div>
                      </div>
@@ -105,7 +105,7 @@
      </div>
 
      <footer>
-         <!-- <script type="text/javascript" src='./js/phpteam.js'></script> -->
+         <script type="text/javascript" src='./js/functions.js'></script>
          <?php
         require_once('./layout/footer.php');
           ?>

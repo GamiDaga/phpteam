@@ -68,9 +68,12 @@ body{
 .imagen-index img{
     max-width: 300px;
     max-height: 400px;
+    position:  sticky;
 }
 
-
+.calification{
+    position: absolute;
+}
 
 #filter-nav{
   background-color: #444;
