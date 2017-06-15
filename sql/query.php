@@ -13,7 +13,7 @@ function pageMovies($start_from, $quantityPages,$orderBy = "null",$formatOrder =
     }
     $sql="SELECT id, nombre, sinopsis, anio, generos_id
             FROM peliculas
-            WHERE nombre LIKE '%$search%'
+            WHERE nombre LIKE '%$search%' AND generos_id= '$genere'
             ORDER BY $orderBy $formatOrder
             LIMIT ".$start_from.",".$quantityPages;
     return $sql;
