@@ -15,7 +15,6 @@ require_once('./functions/functions.php');
     <div class="parallax-container">
         <div class="parallax"><img src="./images/background.jpg"></div>
     </div>
-
     <div class="contenedor">
         <div class="pelicula">
             <?php
@@ -28,7 +27,13 @@ require_once('./functions/functions.php');
                 <span class='imagen-index'><img src='./functions/showImage.php?idMovie=".$row['id']."'></span>
                 <div class='info-pelicula'>
                     <h1>".$row['nombre']."</h1>
-                    <p>".$row['anio'],' ', calification($row['id'])."</p>
+                    <div class='right'>
+                    <p>".calification($row['id'])."
+                    <i class='material-icons'>star rate</i></p>
+                    </div>
+                    <p>".$row['anio']."</p>
+
+
                     <p>".$row['sinopsis']."</p>
                 </div>
             </div>
@@ -50,7 +55,7 @@ require_once('./functions/functions.php');
                     ?>
 
                     <!-- Aca seria donde el usuario escribe su comentario, nombre y apellido son los del usuario que este actualmente ingresado -->
-                        <?php 
+                        <?php
                         echo '
                             <form class="" action="./addComments.php" method="post">
                                 <input type="hidden" name="userId" value="'.$_SESSION['id'].'">
@@ -58,17 +63,17 @@ require_once('./functions/functions.php');
                                 <input type="hidden" name="date" value="'.date("Y/m/d").'">
                                 <div class="input-field col right">
                                     <select name="score">
-                                      <option  value="1">1</option>
-                                      <option  value="2">2</option>
-                                      <option  value="3">3</option>
-                                      <option  value="4">4</option>
-                                      <option  value="5">5</option>
+                                      <option class="calification" value="1">1</option>
+                                      <option class="calification" value="2">2</option>
+                                      <option class="calification" value="3">3</option>
+                                      <option class="calification" value="4">4</option>
+                                      <option class="calification" value="5">5</option>
 
                                     </select>
                                     <label>Calificacion</label>
                                     </div>
                                 <div class="input-field col s12">
-                                    <textarea id="comments" name="comments" class="materialize-textarea"></textarea>
+                                    <textarea id="comments" name="comments" class="materialize-textarea required"></textarea>
                                     <label for="comments">Comentar</label>
                                     <br>
                                 </div>

@@ -105,7 +105,7 @@
      </div>
 
      <footer>
-         <!-- <script type="text/javascript" src='./js/phpteam.js'></script> -->
+         <script type="text/javascript" src='./js/phpteam.js'></script>
          <?php
         require_once('./layout/footer.php');
           ?>
