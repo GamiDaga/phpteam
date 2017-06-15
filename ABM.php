@@ -76,11 +76,15 @@ if (isset($_SESSION['log']) && $_SESSION['log'] == true && $_SESSION['admin'] ==
 
         case 'registerUser':
             if (($_POST['lastname'] != "") && ($_POST['name'] != "") && ($_POST['user'] != "") && ($_POST['password'] != "") && ($_POST['repassword'] != "") && ($_POST['email'] != "") &&  ($_POST['password'] == $_POST['repassword'])) {
-                $query = register($_POST['lastname'],$_POST['name'],$_POST['user'],$_POST['password'], $_POST['email'])
-            }else {
-
+                addslashes($_POST['lastname']);
+                addslashes($_POST['name']);
+                addslashes($_POST['user']);
+                addslashes($_POST['email']);
+                $query = register($_POST['lastname'],$_POST['name'],$_POST['user'],$_POST['password'], $_POST['email']);
+            }else{
+                
             }
-            $_POST['lastname'],$_POST['name'],$_POST['user'],$_POST['password'],$_POST['repassword']
+            $_POST['lastname'],$_POST['name'],$_POST['user'],$_POST['password'],$_POST['repassword'],$_POST['email']
         break;
 
         default:
