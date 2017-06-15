@@ -54,7 +54,7 @@
                                     echo "<option value='".$row[id]."'>".$row[genero]." </option>";
                                 };
                                 ?>
-                                <label>Select</label>
+                                <label for="idGenero">Select</label>
                             </select>
                         </div>
 

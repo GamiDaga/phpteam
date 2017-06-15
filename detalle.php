@@ -118,7 +118,7 @@ require_once('./functions/functions.php');
 
                                 <p class="col"> Id:'.$row['id'].'</p>
                                 <p class="col">'.$listUser[$row['usuarios_id']].'</p>
-                                <p class="col">'.$row['lastname'].'</p>
+                                <p class="col">'.$row['apellido'].'</p>
                                 <p class="col right">'.$row['fecha'].'</p>
                         </div>
                         <div>

@@ -27,62 +27,108 @@
          </div>
 
 
-             <div id="filter-nav" class="nav-wrapper gris-1">
-                 <nav>
-                     <form action="./index.php" methode="get">
+             <div id="filter-nav" class="menu">
+                     <form id="filters" action="./index.php" methode="get">
+
 
                          <div class="separador">
-                             <label>Ordenar por:</label>
-                             <p>
+                             <p>Ordenar por:</p>
+                             <div class="filter">
                                  <input id="nombe" value="nombre" type="radio" name="orderBy" class="validate" />
                                  <label for="nombe">Nombre</label>
-                             </p>
-                             <p>
+                             </div>
+                             <div class="filter">
                                  <input id="anio" value="anio" type="radio" name="orderBy" class="validate"/>
                                  <label for="anio">Año</label>
-                             </p>
+                             </div>
 
                          </div>
 
                          <div class="separador">
-                             <label>Orden</label>
-                             <p>
+                             <p>Orden</p>
+                             <div class="filter">
                                  <input id="ascendente" value="ASC" type="radio" name="formatOrder" class="validate"/>
                                  <label for="ascendente">Ascendente</label>
-                             </p>
-                             <p>
+                             </div>
+                             <div class="filter">
                                  <input id="descendiente" value="DESC" type="radio" name="formatOrder" class="validate"/>
                                  <label for="descendiente">Descendiente</label>
-                             </p>
+                             </div>
                          </div>
 
                          <div class="separador">
-                             <ul class="">
+                             <ul class="filter">
                                  <div class="input-field">
                                      <li>
                                          <input id="search" name="search" type="search" class="calidate"/>
                                          <label class="label-icon" for="search">
                                              <i class="material-icons">search</i></label>
                                              <i class="material-icons">close</i>
-                                         </li>
-                                     </div>
-                                 </ul>
+                                      </li>
+                                 </div>
+                             </ul>
+                         </div>
+
+                        <div class="separador">
+                            <p>Genero</p>
+                            <div class="filter">
+
+                                <?php
+                                $field = '*';
+                                $table = 'generos';
+                                $query = getAny($field,$table);
+                                $result = mysqli_query($link, $query);
+                                ?>
+
+                                <select name="genreSearch">
+                                    <option value="" disabled selected>Generos</option>
+                                    <?php
+                                    while($row = mysqli_fetch_assoc($result)) {
+                                        echo "<option value='".$row[id]."'>".$row[genero]." </option>";
+                                    };
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="separador">
+                            <p>Año</p>
+                            <div class="filter">
+                                 <?php
+                                 $query = getYear();
+                                 $result = mysqli_query($link,$query);
+                                //  echo "<pre>";var_dump($result);
+                                 $ult = 0;
+
+                                 echo '<select class="col s4" name="year">';
+                                 while ($row = mysqli_fetch_array($result)) {
+                                     //echo "<pre>";var_dump($row);
+                                     if ($row['anio'] > $ult) {
+                                         echo '<option class="" value="'.$row['anio'].'">'.$row['anio'].'</option>';
+                                         $ult = $row['anio'];
+                                     }
+                                 }
+                                 echo '</select> ';
+                                 ?>
                              </div>
-                             <div>
+                        </div>
+
+
+                             <div class="navButton">
                                  <button type="submit" class="btn btn-submit">Buscar</button>
                              </div>
                          </form>
 
+                     <div class="navButton">
                          <?php
                          if (isset($_SESSION['log']) && $_SESSION['log'] == true && $_SESSION['admin'] == true) {
                                 echo "<form action='./ABMcreate.php' method='post'>
-                                      <button  class='btn'>Crear</button>
+                                         <button  class='btn'>Crear</button>
                                       </form>";
                          }
                           ?>
-
-                     </nav>
-                 </div>
+                     </div>
+              </div>
 
                  <div class="container">
                      <?php //echo "<pre>"; var_dump($_GET['page']);exit();
@@ -143,7 +189,8 @@
                                  if (!isset($_GET['orderBy'])) { $orderBy = null;}          else {$orderBy = $_GET['orderBy'];}
                                  if (!isset($_GET['formatOrder'])) {$formatOrder = null;}  else {$formatOrder = $_GET['formatOrder'];}
                                  if (!isset($_GET['search'])) {$search = null;}            else {$search =$_GET['search'];}
-                                  $query = pageMovies($start_from, $quantity_rows_in_page,  $orderBy, $formatOrder, $search);
+                                 if (!isset($_GET['genreSearch'])) {$genreSearch = null;}            else {$genreSearch =$_GET['genreSearch'];}
+                                  $query = pageMovies($start_from, $quantity_rows_in_page,  $orderBy, $formatOrder, $search, $genreSearch);
                                   //echo '<pre>'; var_dump($query); exit();
 
 

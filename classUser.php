@@ -15,7 +15,7 @@ class user {
 
     public function validate($userName,$password) //valida y construye el obj user
     {
-        $link = mysqli_connect('localhost', 'root', 'root','phpteam') or die ("Error ".mysqli_error($mysqli));
+        $link = mysqli_connect('localhost', 'root', '','phpteam') or die ("Error ".mysqli_error($mysqli));
         $query="SELECT *
         FROM usuarios
         WHERE nombreusuario = '$userName' AND password = '$password'";
