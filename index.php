@@ -214,10 +214,10 @@
                                  //que mostrará los resultados por nombre
                                  while($row = mysqli_fetch_assoc($result)) {
                                      echo "<div class='row'>";
-                                     echo "<span class='imagen-index'><img src='./functions/showImage.php?idMovie=".$row['id']."'></span>"; // aca va la imagen desde el sql pero misteriosamente no funiona
+                                     echo "<span class='imagen-index col s10 m10 l4'><img src='./functions/showImage.php?idMovie=".$row['id']."'></span>"; // aca va la imagen desde el sql pero misteriosamente no funiona
                                      echo "
-                                     <div class='info-pelicula'>
-                                         <h1>".$row['nombre']."</h1>
+                                     <div class='info-pelicula col s10 m10 l6'>
+                                         <h3>".$row['nombre']."</h3>
                                          <div class='score right'>
                                              <p>".number_format(calification($row['id']), 2, ".", ",")."
                                              <i class='material-icons'>star rate</i></p>
@@ -225,18 +225,22 @@
                                          <p>".$row['anio']."</p>
                                          <p>".$row['sinopsis']."</p>
                                      </div>
-                                         
-                                     <form action='./detalle.php' method='get'>
-                                        <input type='hidden' name='idMovie' value='".$row['id']."'>
-                                        <button  class='btn'> Ver mas</button>
-                                     </form>";
-                                     if (isset($_SESSION['log']) && $_SESSION['log'] == true && $_SESSION['admin'] == true) {
-                                            echo "<form action='./ABMupdate.php' method='post'>
-                                                  <input type='hidden' name='idMovie' value='".$row['id']."'>
-                                                  <button  class='btn'>Editar</button>
-                                                  </form>";
-                                     }
-                                     echo "</div>";
+                                     <div class='info-pelicula col s10 m10 l6'>
+                                         <form action='./detalle.php' method='get'>
+                                            <input type='hidden' name='idMovie' value='".$row['id']."'>
+                                            <button  class='btn'> Ver mas</button>
+                                         </form>";
+                                         if (isset($_SESSION['log']) && $_SESSION['log'] == true && $_SESSION['admin'] == true) {
+                                                echo "<form action='./ABMupdate.php' method='post'>
+                                                      <input type='hidden' name='idMovie' value='".$row['id']."'>
+                                                      <button  class='btn'>Editar</button>
+                                                      </form>";
+                                         }
+                                     echo "
+                                     </div>
+
+                                     </div>
+                                     ";
                                  };
                                  ?>
                              </span>
