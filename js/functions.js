@@ -10,27 +10,28 @@ function validate(){
         return 0;
     }
 
-    if ((document.getElementById('name').value.length < 1) && (!(/^[a-zA-Z-]+$/.test(document.getElementById('name').value)))){
+    if ( (document.getElementById('name').value.length < 1) &&  !(/^[a-zA-Z-]+$/.test(document.getElementById('name').value) )  ){
         alert("El campo Nombre no coincide con lo esperado. Modifiquelo y vuelva a intentar.");
         return 0;
     }
 
-    if ((document.getElementById('user').value.length < 6) && ((/^[a-zA-Z-]+$/.test(document.getElementById('user').value)))){
-        alert("El campo Nombre de Usuario no coincide con lo esperado. Modifiquelo y vuelva a intentar.");
+    if ((document.getElementById('userName').value.length < 6) && !(/^[a-zA-Z0-9-]+$/.test(document.getElementById('userName').value)) ){
+        alert("El campo Usuario no coincide con lo esperado. Modifiquelo y vuelva a intentar.");
         return 0;
     }
 
-    if (document.getElementById('password').value == document.getElementById('repassword').value) {
-        if((document.getElementById('password').length > 5) && (!(/[a-z]/.test(document.getElementById('password')))) && (!(/[A-Z]/.test(document.getElementById('password')))) && (!(/[0-9]|\W/.test(document.getElementById('password')))) ) {
+    if (document.getElementById('contraseña').value == document.getElementById('recontraseña').value) {
+        if( ( !document.getElementById('contraseña').value.length > 5 && !/[a-z]/.test(document.getElementById('contraseña').value) && !/[A-Z]/.test(document.getElementById('contraseña').value) ) &&  !(/[0-9]/.test(document.getElementById('contraseña').value) || /\W/.test(document.getElementById('contraseña').value)) ) {
             alert("El campo Contraseña no coincide con lo esperado. Modifiquelo y vuelva a intentar.");
             return 0;
         }
-        if((document.getElementById('repassword').length > 5) && (!(/[a-z]/.test(document.getElementById('password')))) && (!(/[A-Z]/.test(document.getElementById('password')))) && (!(/[0-9]|\W/.test(document.getElementById('password')))) ) {
+        if(document.getElementById('recontraseña').value.length > 5 && !(/[a-z]/.test(document.getElementById('contraseña').value)) && !(/[A-Z]/.test(document.getElementById('contraseña').value)) && !(/[0-9]|\W/.test(document.getElementById('contraseña').value)) ) {
             alert("El campo Re-Contraseña no coincide con lo esperado. Modifiquelo y vuelva a intentar.");
             return 0;
         }
     }else {
         alert("El campo Contraseña y su repeticion no coinciden. Modifiquelo y vuelva a intentar.");
+        return 0;
     }
 
     //Validamos un campo de texto como email
@@ -58,6 +59,9 @@ function validateComments() {
     //document.getElementById('comments').setAttribute('value',string(document.getElementById('comments')));
 }
 
+// function () {
+//
+// }
 
    //
    // En  el  registro  deberá  haber  un  formulario  que

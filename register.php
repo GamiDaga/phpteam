@@ -31,12 +31,12 @@
 
                      <div class="row campo white">
                          <div class="input-field col s10 m5 l6">
-                             <input id="lastname" type="text" name="lastname" class="validate" required>
+                             <input id="lastname" type="text" name="lastname" required>
                              <label for="lastname">Apellido</label>
                          </div>
 
                          <div class="input-field col s10 m5 l6">
-                             <input id="name" type="text" name="name" class="validate" required>
+                             <input id="name" type="text" name="name" required>
                              <label for="name">Nombre</label>
                          </div>
                          <div class="campo-aclaracion">
@@ -46,8 +46,8 @@
                      </div>
                      <div class="row campo white">
                          <div class="input-field col s10 m5 l6">
-                             <input id="user" type="text" name="user" class="validate" required>
-                             <label for="user">Usuario</label>
+                             <input id="userName" type="text" name="userName"  required>
+                             <label for="userName">Usuario</label>
                          </div>
                          <div class="campo-aclaracion">
                              <p>Debe contener al menos 6 caracteres alfanuméricos (a-z A-Z 0-9)</p>
@@ -55,8 +55,8 @@
                      </div>
                      <div class="row campo white">
                          <div class="input-field col s10 m5 l6">
-                             <input id="password" type="password" name="password" class="validate" required>
-                             <label for="password1">Contraseña</label>
+                             <input id="contraseña" type="text" name="contraseña" required>
+                             <label for="contraseña">Contraseña</label>
                          </div>
                          <div class="campo-aclaracion">
                              <p> Debe contener al menos 6 caracteres, una letra mayúscula, una minúscula y un número o un símbolo (ej, $, @, etc).</p>
@@ -64,18 +64,18 @@
                      </div>
                      <div class="row campo white">
                          <div class="input-field col s10 m5 l6">
-                             <input id="repassword" type="password" name="repassword" class="validate" required>
-                             <label for="repassword">Re-Contraseña</label>
+                             <input id="recontraseña" type="text" name="recontraseña" required>
+                             <label for="recontraseña">Re-Contraseña</label>
                          </div>
 
                      </div>
                      <div class="row campo white">
                          <div class="input-field col s10 m10 l10 inline">
-                             <input id="email" type="email" name="email" class="validate">
+                             <input id="email" type="email" name="email">
                              <label for="email" data-error="wrong" data-success="right">Email</label>
                          </div>
                      </div>
-                     <input type="submit" id="enviar" class="btn btn-submit" /> <!-- onclick="validate()" -->
+                     <input type="submit" id="enviar" class="btn btn-submit" onclick="validate()" /> <!-- onclick="validate()" -->
                  </form>
              </div>
 

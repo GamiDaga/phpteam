@@ -1,6 +1,6 @@
 <?php
 // require_once("./consultsql.php");
-require_once('./sql/connect.php');
+// require_once('./sql/connect.php');
 
 /**
  *
@@ -13,9 +13,9 @@ class user {
     private $email;
     private $admin;
 
-    public function validate($userName,$password) //valida y construye el obj user
+    public function validate($userName,$password,$link) //valida y construye el obj user
     {
-        $link = mysqli_connect('localhost', 'root', 'root','phpteam') or die ("Error ".mysqli_error($mysqli));
+        // $link = mysqli_connect('localhost', 'root', 'root','phpteam') or die ("Error ".mysqli_error($mysqli));
         $query="SELECT *
         FROM usuarios
         WHERE nombreusuario = '$userName' AND password = '$password'";

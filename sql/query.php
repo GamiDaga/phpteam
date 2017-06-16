@@ -7,13 +7,13 @@ function movie(){
     return $sql;
   }
 
-function pageMovies($start_from, $quantityPages,$orderBy = "null",$formatOrder = "", $search="", $genre="" ){
+function pageMovies($start_from, $quantityPages,$orderBy = "null",$formatOrder = "", $search="", $genre="", $year="" ){
     if ($orderBy == null) {
       $orderBy = "null";
     }
     $sql="SELECT id, nombre, sinopsis, anio, generos_id
             FROM peliculas
-            WHERE nombre LIKE '%$search%' AND generos_id LIKE '%$genre%'
+            WHERE nombre LIKE '%$search%' AND generos_id LIKE '%$genre%' AND anio LIKE '%$year%'
             ORDER BY $orderBy $formatOrder
             LIMIT ".$start_from.",".$quantityPages;
     return $sql;
@@ -69,8 +69,8 @@ function movieDetail($id){
   }
 
   function register($apellido, $nombre, $usuario, $contraseña, $email){
-      $sql =" INSERT INTO usuarios (apellido, nombre, nombreusuario, password, email)
-      VALUES ('$apellido', '$nombre', '$usuario', '$contraseña', '$email')";
+      $sql =" INSERT INTO usuarios (apellido, nombre, nombreusuario, password, email, administrador)
+      VALUES ('$apellido', '$nombre', '$usuario', '$contraseña', '$email', 0)";
       return $sql;
   }
 

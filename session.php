@@ -1,6 +1,7 @@
 <?php
     require_once("./layout/head.php");
     require_once("./classUser.php");
+    require_once('./sql/connect.php'); $link = connect();
 
   try {
 
@@ -9,7 +10,7 @@
 
 
     $user = new user;
-    $user->validate($userName, $password);
+    $user->validate($userName, $password,$link);
     session_start();
     $_SESSION['log'] = true;
     $_SESSION['id'] = $user->getId();

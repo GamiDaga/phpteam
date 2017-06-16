@@ -122,8 +122,6 @@ require_once('./functions/functions.php');
                     <div class="col s8">
                         <div class="data">
 
-                                <p class="col"> Id:'.$row['id'].'</p>
-
                                 <p class="col">'.$listUser[$row['usuarios_id']].'</p>
                                 <p class="col right">'.$row['fecha'].'</p>
                                 <p class="col right">'.$row['calificacion'].'

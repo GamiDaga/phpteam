@@ -60,7 +60,7 @@
                              <ul class="filter">
                                  <div class="input-field">
                                      <li>
-                                         <input id="search" name="search" type="search" class="calidate"/>
+                                         <input id="search" name="search" type="search" class="calidate" value="<?php if (isset($_GET['search'])) echo ($_GET['search']); ?>"/>
                                          <label class="label-icon" for="search">
                                              <i class="material-icons">search</i></label>
                                              <i class="material-icons">close</i>
@@ -191,7 +191,8 @@
                                  if (!isset($_GET['formatOrder'])) {$formatOrder = null;}  else {$formatOrder = $_GET['formatOrder'];}
                                  if (!isset($_GET['search'])) {$search = null;}            else {$search =$_GET['search'];}
                                  if (!isset($_GET['genreSearch'])) {$genreSearch = null;}            else {$genreSearch =$_GET['genreSearch'];}
-                                  $query = pageMovies($start_from, $quantity_rows_in_page,  $orderBy, $formatOrder, $search, $genreSearch);
+                                  if (!isset($_GET['year'])) {$year = null;}            else {$year =$_GET['year'];}
+                                  $query = pageMovies($start_from, $quantity_rows_in_page,  $orderBy, $formatOrder, $search, $genreSearch, $year);
                                   //echo '<pre>'; var_dump($query); exit();
 
 
