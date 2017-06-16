@@ -31,6 +31,18 @@
                      <form id="filters" action="./index.php" methode="get">
 
 
+<<<<<<< HEAD
+                         <ul id="separador1" class="separador">
+                             <li><label for="separador1">Ordenar por:</label></li>
+                             <li>
+                                 <input id="nombe" value="nombre" type="radio" name="orderBy" class="validate" />
+                                 <label for="nombe">Nombre</label>
+                             </li>
+                             <li>
+                                 <input id="anio" value="anio" type="radio" name="orderBy" class="validate"/>
+                                 <label for="anio">Año</label>
+                             </li>
+=======
                          <div class="separador">
                              <p>Ordenar por:</p>
                              <div class="filter">
@@ -41,9 +53,23 @@
                                  <input id="anio" value="anio" type="radio" name="orderBy" class="validate"/>
                                  <label for="anio">Año</label>
                              </div>
+>>>>>>> 886818d00e2f562afafeade7b15ff4154cfcfe53
 
-                         </div>
+                         </ul>
 
+<<<<<<< HEAD
+                         <ul id="separador" class="separador">
+                             <li>
+                                 <input id="ascendente" value="ASC" type="radio" name="formatOrder" class="validate"/>
+                                 <label for="ascendente">Ascendente</label>
+                             </li>
+                             <li>
+                                 <input id="descendiente" value="DESC" type="radio" name="formatOrder" class="validate"/>
+                                 <label for="descendiente">Descendiente</label>
+                             </li>
+                             <label for="separador">Orden</label>
+                         </ul>
+=======
                          <div class="separador">
                              <p>Orden</p>
                              <div class="filter">
@@ -55,6 +81,7 @@
                                  <label for="descendiente">Descendiente</label>
                              </div>
                          </div>
+>>>>>>> 886818d00e2f562afafeade7b15ff4154cfcfe53
 
                          <div class="separador">
                              <ul class="filter">
@@ -111,10 +138,32 @@
                                  echo '</select> ';
                                  ?>
                              </div>
+<<<<<<< HEAD
+                             <div class="filter-year col">
+                                 <?php
+                                 $query = getYear();
+                                 $result = mysqli_query($link,$query);
+                                //  echo "<pre>";var_dump($result);
+                                 $ult = 0;
+
+                                 echo '<select class="col s4" name="year">';
+                                 while ($row = mysqli_fetch_array($result)) {
+                                     //echo "<pre>";var_dump($row);
+                                     if ($row['anio'] > $ult) {
+                                         echo '<option class="" value="'.$row['anio'].'">'.$row['anio'].'</option>';
+                                         $ult = $row['anio'];
+                                     }
+                                 }
+                                 echo '</select> ';
+                                 ?>
+                             </div>
+                             <div>
+=======
                         </div>
 
 
                              <div class="navButton">
+>>>>>>> 886818d00e2f562afafeade7b15ff4154cfcfe53
                                  <button type="submit" class="btn btn-submit">Buscar</button>
                              </div>
 

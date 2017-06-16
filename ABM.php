@@ -26,7 +26,7 @@ if (isset($_SESSION['log']) && $_SESSION['log'] == true && $_SESSION['admin'] ==
                 $id = mysqli_insert_id($link);
 
                 header("location:./detalle.php?idMovie=".$id);
-            }else {
+            }else{
                 echo "<pre>";var_dump("La carga de la película no se ha realizado");exit();
             }
         break;
@@ -76,13 +76,19 @@ if (isset($_SESSION['log']) && $_SESSION['log'] == true && $_SESSION['admin'] ==
 
         case 'registerUser':
             if (($_POST['lastname'] != "") && ($_POST['name'] != "") && ($_POST['user'] != "") && ($_POST['password'] != "") && ($_POST['repassword'] != "") && ($_POST['email'] != "") &&  ($_POST['password'] == $_POST['repassword'])) {
-                addslashes($_POST['lastname']);
-                addslashes($_POST['name']);
-                addslashes($_POST['user']);
-                addslashes($_POST['email']);
-                $query = register($_POST['lastname'],$_POST['name'],$_POST['user'],$_POST['password'], $_POST['email']);
+                $query = getUser($_POST['user']);
+                $result = mysqli_query($link, $query);
+                echo "<pre>";var_dump($result);exit();
+                $row = mysqli_fetch_assoc($result);
+                if ($row['nombreusuario'] != $_POST['user']) {
+                    $query = register($_POST['lastname'],$_POST['name'],$_POST['user'],$_POST['password'], $_POST['email']);
+                    $result = mysqli_query($link, $query);
+
+
+                }
+
             }else{
-                
+
             }
             $_POST['lastname'],$_POST['name'],$_POST['user'],$_POST['password'],$_POST['repassword'],$_POST['email']
         break;

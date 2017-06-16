@@ -62,28 +62,29 @@ require_once('./functions/functions.php');
                         echo '
 
                         <div class="row">
-                            <form class="" action="./addComments.php" method="post">
+                            <form class="" action="./addComments.php" method="post" onsubmit="">
                                 <input type="hidden" name="userId" value="'.$_SESSION['id'].'">
                                 <input type="hidden" name="idMovie" value="'.$_GET['idMovie'].'">
                                 <input type="hidden" name="date" value="'.date("Y/m/d").'">
                                 <div class="input-field col right">
                                 <i class="material-icons">star rate</i>
-                                    <select name="score">
+                                    <select name="score" required>
                                       <option class="calification" value="1">1</option>
                                       <option class="calification" value="2">2</option>
                                       <option class="calification" value="3">3</option>
                                       <option class="calification" value="4">4</option>
                                       <option class="calification" value="5">5</option>
+
                                     </select>
                                     <label>Calificacion</label>
                                     </div>
                                     <br>
                                 <div class="input-field col s12">
-                                    <textarea id="comments" tipe="text" name="comments" class="materialize-textarea" maxlength="255" required"></textarea>
+                                    <textarea id="comments" type="text" name="comments" class="materialize-textarea" maxlength="255" required"></textarea>
                                     <label for="comments">Comentar</label>
                                     <br>
                                 </div>
-                                <input type="submit" value="Comentar" class="btn btn-submit right hide-on-med-and-down" onclick="validateComments()">    
+                                <button type="" value="" class="btn right hide-on-med-and-down" onclick="validateComments()">Comentar</button>
                             </form>
                         </div>
                         ';

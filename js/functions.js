@@ -15,19 +15,18 @@ function validate(){
         return 0;
     }
 
-    if ((document.getElementById('user').value.length < 6) && (!(/^[a-zA-Z0-9]+$/.test(document.getElementById('user').value)))){
+    if ((document.getElementById('user').value.length < 6) && ((/^[a-zA-Z-]+$/.test(document.getElementById('user').value)))){
         alert("El campo Nombre de Usuario no coincide con lo esperado. Modifiquelo y vuelva a intentar.");
         return 0;
     }
 
-    if (!document.getElementById('password').value == document.getElementById('repassword').value) {
+    if (document.getElementById('password').value == document.getElementById('repassword').value) {
         if((document.getElementById('password').length > 5) && (!(/[a-z]/.test(document.getElementById('password')))) && (!(/[A-Z]/.test(document.getElementById('password')))) && (!(/[0-9]|\W/.test(document.getElementById('password')))) ) {
             alert("El campo Contraseña no coincide con lo esperado. Modifiquelo y vuelva a intentar.");
             return 0;
         }
-
         if((document.getElementById('repassword').length > 5) && (!(/[a-z]/.test(document.getElementById('password')))) && (!(/[A-Z]/.test(document.getElementById('password')))) && (!(/[0-9]|\W/.test(document.getElementById('password')))) ) {
-            alert("El campo Contraseña no coincide con lo esperado. Modifiquelo y vuelva a intentar.");
+            alert("El campo Re-Contraseña no coincide con lo esperado. Modifiquelo y vuelva a intentar.");
             return 0;
         }
     }else {
@@ -50,11 +49,13 @@ function validate(){
 function validateComments() {
 
     if ( (document.getElementById('comments').value.length == 0) || (document.getElementById('comments').value.length > 255) ){
-        alert("El campo Email no coincide con lo esperado. Modifiquelo y vuelva a intentar.");
+        alert("El comentario no debe estar vacio o tener mas de 255 caracteres. Modifiquelo y vuelva a intentar.");
         return 0;
+    }else {
+        document.form.submit();
+
     }
-    document.getElementById('comments').setAttribute('value',string(document.getElementById('comments')));
-    document.form.submit();
+    //document.getElementById('comments').setAttribute('value',string(document.getElementById('comments')));
 }
 
 

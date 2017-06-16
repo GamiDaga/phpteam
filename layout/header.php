@@ -11,7 +11,7 @@
             <a href="./index.php" class="brand-logo"><img class="icon" src="./images/icon.png" alt=""></a>
             <?php if (isset($_SESSION['log']) && ($_SESSION['log'] == true)): ?>
                 <ul class="right">
-                    <li><a href="#" data-activates="slide-out" class="button-sidenav"><i class="material-icons">input</i></a></li>
+                    <li><a href="#" data-activates="slide-out" class="button-sidenav"><i class="material-icons">account_circle</i></a></li>
                 </ul>
             <?php endif; ?>
 
@@ -56,7 +56,7 @@
             <?php endif; ?>
 
 
-            <ul class="right hide-on-med-and-down">
+            <!-- <ul class="right hide-on-med-and-down">
                 <div class="nav-wrapper" >
                     <form>
                         <div class="input-field">
@@ -66,7 +66,7 @@
                       <i class="material-icons">close</i>
                     </div>
                 </form>
-            </ul>
+            </ul> -->
 
             <?php
             if (isset($_SESSION['log']) && ($_SESSION['log'] == true)):

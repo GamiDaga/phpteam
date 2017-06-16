@@ -16,11 +16,13 @@ require_once('./sql/query.php');
         if ($result) {
             header("location:./detalle.php?idMovie=".$_POST['idMovie']);
         }else {
-            echo "<pre>";var_dump("El comentario no se ha realizado");exit();
+            echo "<pre>";var_dump("El comentario no se ha realizado");
+            echo "<a class='btn' href='./detalle.php?idMovie=".$_POST['idMovie']."'>Volver a la pelicula</a>";
+            die();
+            // header("location:./detalle.php?idMovie=".$_POST['idMovie']);
+
         }
     }else{
-        echo "<h2>No se realizo el comentario, vuelva a intentarlo</h2>";
-        echo "<a class='btn' href='./detalle.php?idMovie=".$_POST['idMovie']."'>Volver a la pelicula</a>";
-        exit();
+        header("location:./detalle.php?idMovie=".$_POST['idMovie']);
     }
 ?>

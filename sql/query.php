@@ -7,13 +7,13 @@ function movie(){
     return $sql;
   }
 
-function pageMovies($start_from, $quantityPages,$orderBy = "null",$formatOrder = "", $search=""){
+function pageMovies($start_from, $quantityPages,$orderBy = "null",$formatOrder = "", $search="", $genre="" ){
     if ($orderBy == null) {
       $orderBy = "null";
     }
     $sql="SELECT id, nombre, sinopsis, anio, generos_id
             FROM peliculas
-            WHERE nombre LIKE '%$search%'
+            WHERE nombre LIKE '%$search%' AND generos_id LIKE '%$genre%'
             ORDER BY $orderBy $formatOrder
             LIMIT ".$start_from.",".$quantityPages;
     return $sql;
@@ -101,6 +101,14 @@ function movieDetail($id){
 
       return $sql;
     }
+
+    function getExistUser($name){
+        $sql="SELECT nombreusuario
+                FROM usuarios
+                WHERE nombe=$name";
+
+        return $sql;
+      }
 
     function getYear()
     {
