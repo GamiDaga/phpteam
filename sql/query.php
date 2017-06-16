@@ -69,8 +69,8 @@ function movieDetail($id){
   }
 
   function register($apellido, $nombre, $usuario, $contraseña, $email){
-      $sql =" INSERT INTO usuarios (nombre, email, password, nombre, apellido)
-      VALUES ('$nombre', '$apellido', '$email', '$contraseña', '$apellido')";
+      $sql =" INSERT INTO usuarios (apellido, nombre, nombreusuario, password, email)
+      VALUES ('$apellido', '$nombre', '$usuario', '$contraseña', '$email')";
       return $sql;
   }
 
@@ -105,7 +105,7 @@ function movieDetail($id){
     function getExistUser($name){
         $sql="SELECT nombreusuario
                 FROM usuarios
-                WHERE nombe=$name";
+                WHERE nombreusuario='$name'";
 
         return $sql;
       }

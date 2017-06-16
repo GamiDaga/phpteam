@@ -28,12 +28,10 @@ require_once('./functions/functions.php');
                 <div class='info-pelicula'>
                     <h1>".$row['nombre']."</h1>
                     <div class='score right'>
-                    <p>".number_format(calification($row['id']), 2, ".", ",")."
-                    <i class='material-icons'>star rate</i></p>
+                        <p>".number_format(calification($row['id']), 2, ".", ",")."
+                        <i class='material-icons'>star rate</i></p>
                     </div>
                     <p>".$row['anio']."</p>
-
-
                     <p>".$row['sinopsis']."</p>
                 </div>
             </div>

@@ -34,12 +34,12 @@
                          <div class="separador">
                              <p>Ordenar por:</p>
                              <div class="filter">
-                                 <input id="nombe" value="nombre" type="radio" name="orderBy" class="validate" />
-                                 <label for="nombe">Nombre</label>
+                                 <input id="name" value="nombre" type="radio" name="orderBy" class="validate" />
+                                 <label for="name">Nombre</label>
                              </div>
                              <div class="filter">
-                                 <input id="anio" value="anio" type="radio" name="orderBy" class="validate"/>
-                                 <label for="anio">Año</label>
+                                 <input id="year" value="anio" type="radio" name="orderBy" class="validate"/>
+                                 <label for="year">Año</label>
                              </div>
 
                          </div>
@@ -90,7 +90,7 @@
                                 </select>
                             </div>
                         </div>
-                        
+
                         <div class="separador">
                             <p>Año</p>
                             <div class="filter">
@@ -214,14 +214,21 @@
                                  //que mostrará los resultados por nombre
                                  while($row = mysqli_fetch_assoc($result)) {
                                      echo "<div class='row'>";
-                                     echo "<span class='imagen-index'><img src='./functions/showImage.php?idMovie=".$row['id']."'></span>" // aca va la imagen desde el sql pero misteriosamente no funiona
-                                     //echo "<img src='./Carteles/el-senor-de-los-anillos-la-comunidad-del-anillo.jpg' width='300px' height='450px'>"
-                                     ."<h1>".$row['nombre']."</h1>"
-                                     ."<p>".$row['anio'],' ', calification($row['id'])."</p>"
-                                     ."<p>".$row['sinopsis']."</p>";
-                                     echo "<form action='./detalle.php' method='get'>
-                                     <input type='hidden' name='idMovie' value='".$row['id']."'>
-                                     <button  class='btn'> Ver mas</button>
+                                     echo "<span class='imagen-index'><img src='./functions/showImage.php?idMovie=".$row['id']."'></span>"; // aca va la imagen desde el sql pero misteriosamente no funiona
+                                     echo "
+                                     <div class='info-pelicula'>
+                                         <h1>".$row['nombre']."</h1>
+                                         <div class='score right'>
+                                             <p>".number_format(calification($row['id']), 2, ".", ",")."
+                                             <i class='material-icons'>star rate</i></p>
+                                         </div>
+                                         <p>".$row['anio']."</p>
+                                         <p>".$row['sinopsis']."</p>
+                                     </div>
+                                         
+                                     <form action='./detalle.php' method='get'>
+                                        <input type='hidden' name='idMovie' value='".$row['id']."'>
+                                        <button  class='btn'> Ver mas</button>
                                      </form>";
                                      if (isset($_SESSION['log']) && $_SESSION['log'] == true && $_SESSION['admin'] == true) {
                                             echo "<form action='./ABMupdate.php' method='post'>

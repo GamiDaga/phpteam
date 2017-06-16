@@ -5,6 +5,7 @@ require_once('./sql/query.php');
 session_start();
 
 
+// echo "<pre>";var_dump($_FILES['operation']);exit();
 if (isset($_SESSION['log']) && $_SESSION['log'] == true && $_SESSION['admin'] == true) {
 
     switch ($_POST['operation']) {
@@ -74,31 +75,47 @@ if (isset($_SESSION['log']) && $_SESSION['log'] == true && $_SESSION['admin'] ==
                  }
         break;
 
-        case 'registerUser':
-            if (($_POST['lastname'] != "") && ($_POST['name'] != "") && ($_POST['user'] != "") && ($_POST['password'] != "") && ($_POST['repassword'] != "") && ($_POST['email'] != "") &&  ($_POST['password'] == $_POST['repassword'])) {
-                $query = getUser($_POST['user']);
-                $result = mysqli_query($link, $query);
-                echo "<pre>";var_dump($result);exit();
-                $row = mysqli_fetch_assoc($result);
-                if ($row['nombreusuario'] != $_POST['user']) {
-                    $query = register($_POST['lastname'],$_POST['name'],$_POST['user'],$_POST['password'], $_POST['email']);
-                    $result = mysqli_query($link, $query);
-
-
-                }
-
-            }else{
-
-            }
-            $_POST['lastname'],$_POST['name'],$_POST['user'],$_POST['password'],$_POST['repassword'],$_POST['email']
-        break;
-
         default:
 
         break;
     }
+} elseif ($_POST['operation'] == 'register') {
+
+        if (($_POST['lastname'] != "") && ($_POST['name'] != "") && ($_POST['user'] != "") && ($_POST['password'] != "") && ($_POST['repassword'] != "") && ($_POST['email'] != "") &&  ($_POST['password'] == $_POST['repassword'])) {
+            $query = getExistUser($_POST['user']);
+            //echo "<pre>";var_dump($query);exit();
+
+            $result = mysqli_query($link, $query);
+            //echo "<pre>";var_dump($result);exit();
+            // $row = mysqli_fetch_assoc($result);
+            $exist = mysqli_num_rows($result);
+
+            //echo "<pre>";var_dump(!$exist);exit();
+            if (!$exist) {
+                $query = register($_POST['lastname'],$_POST['name'],$_POST['user'],$_POST['password'], $_POST['email']);
+                // echo "<pre>";var_dump($query);exit();
+
+                $result = mysqli_query($link, $query);
+                if ($result) {
+                    echo "Su usuario fue creado satisfactoriamente";
+                    echo "<br><a href='./index.php'>volver al index</a>";
+                    exit();
+                }else{
+                    echo "Algo anduvo mal con la creacion del usuario";
+                    echo "<br><a href='./register.php'>volver al registro</a>";
+                    exit();
+                }
+            }else{
+                echo "Ya existe un usuario con ese nombre de usuario";
+                echo "<br><a href='./register.php'>volver al registro</a>";
+                exit();
+            }
+        // //$_POST['lastname'],$_POST['name'],$_POST['user'],$_POST['password'],$_POST['repassword'],$_POST['email']
+        }
+}else{
+    echo "Algo anduvo mal";
+    echo "<br><a href='./index.php'>volver al index</a>";
+    exit();
 }
-
-
 
  ?>

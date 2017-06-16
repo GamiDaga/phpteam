@@ -25,7 +25,10 @@
              <div class="row formulario-registro">
                  <h1>Registro</h1>
 
-                 <form class="col s12" action="./funciona.php" method="post">
+                 <form class="col s12" action="./ABM.php" method="post">
+
+                     <input type="hidden" name="operation" value="register">
+
                      <div class="row campo white">
                          <div class="input-field col s10 m5 l6">
                              <input id="lastname" type="text" name="lastname" class="validate" required>
@@ -72,7 +75,7 @@
                              <label for="email" data-error="wrong" data-success="right">Email</label>
                          </div>
                      </div>
-                     <input type="button" id="enviar" class="btn btn-submit" onclick="validate()"/>
+                     <input type="submit" id="enviar" class="btn btn-submit" /> <!-- onclick="validate()" -->
                  </form>
              </div>
 
