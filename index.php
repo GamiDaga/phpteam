@@ -34,11 +34,11 @@
                          <div class="separador">
                              <p>Ordenar por:</p>
                              <div class="filter">
-                                 <input id="name" value="nombre" type="radio" name="orderBy" class="validate" />
+                                 <input id="name" value="nombre" type="radio" name="orderBy" class="validate" <?php if ((isset($_GET['orderBy']) && $_GET['orderBy'] == 'nombre')) echo ('checked'); ?>/>
                                  <label for="name">Nombre</label>
                              </div>
                              <div class="filter">
-                                 <input id="year" value="anio" type="radio" name="orderBy" class="validate"/>
+                                 <input id="year" value="anio" type="radio" name="orderBy" class="validate" <?php if (isset($_GET['orderBy']) && $_GET['orderBy'] == 'anio') echo ('checked'); ?>/>
                                  <label for="year">Año</label>
                              </div>
 
@@ -47,11 +47,11 @@
                          <div class="separador">
                              <p>Orden</p>
                              <div class="filter">
-                                 <input id="ascendente" value="ASC" type="radio" name="formatOrder" class="validate"/>
+                                 <input id="ascendente" value="ASC" type="radio" name="formatOrder" class="validate" <?php if ((isset($_GET['formatOrder']) && $_GET['formatOrder'] == 'ASC') ) echo ('checked'); ?>/>
                                  <label for="ascendente">Ascendente</label>
                              </div>
                              <div class="filter">
-                                 <input id="descendiente" value="DESC" type="radio" name="formatOrder" class="validate"/>
+                                 <input id="descendiente" value="DESC" type="radio" name="formatOrder" class="validate" <?php if (isset($_GET['formatOrder']) && $_GET['formatOrder'] == 'DESC') echo ('checked'); ?>/>
                                  <label for="descendiente">Descendiente</label>
                              </div>
                          </div>
@@ -79,12 +79,12 @@
                                 $query = getAny($field,$table);
                                 $result = mysqli_query($link, $query);
                                 ?>
-
                                 <select name="genreSearch">
                                     <option value="" disabled selected>Generos</option>
+                                    <option value=""></option>
                                     <?php
                                     while($row = mysqli_fetch_assoc($result)) {
-                                        echo "<option value='".$row[id]."'>".$row[genero]." </option>";
+                                        echo "<option value='".$row['id']."'>".$row['genero']." </option>";
                                     };
                                     ?>
                                 </select>
@@ -99,8 +99,11 @@
                                  $result = mysqli_query($link,$query);
                                 //  echo "<pre>";var_dump($result);
                                  $ult = 0;
-
-                                 echo '<select class="col s4" name="year">';
+                                 ?>
+                                 <select class="col s4" name="year">
+                                    <option value="" disabled selected>Año</option>
+                                    <option value=""></option>
+                                <?php
                                  while ($row = mysqli_fetch_array($result)) {
                                      //echo "<pre>";var_dump($row);
                                      if ($row['anio'] > $ult) {
@@ -191,28 +194,11 @@
                                  if (!isset($_GET['formatOrder'])) {$formatOrder = null;}  else {$formatOrder = $_GET['formatOrder'];}
                                  if (!isset($_GET['search'])) {$search = null;}            else {$search =$_GET['search'];}
                                  if (!isset($_GET['genreSearch'])) {$genreSearch = null;}            else {$genreSearch =$_GET['genreSearch'];}
-                                  if (!isset($_GET['year'])) {$year = null;}            else {$year =$_GET['year'];}
+                                 if (!isset($_GET['year'])) {$year = null;}            else {$year =$_GET['year'];}
                                   $query = pageMovies($start_from, $quantity_rows_in_page,  $orderBy, $formatOrder, $search, $genreSearch, $year);
                                   //echo '<pre>'; var_dump($query); exit();
-
-
-
-
-                                // if (isset($_GET['orderBy']) && isset($_GET['formatOrder'])) {
-                                //     $query = pageMovies($start_from, $quantity_rows_in_page, $_GET['orderBy'],$_GET['formatOrder']);
-                                // }elseif (isset($_GET['orderBy'])) {
-                               //      $query = pageMovies($start_from, $quantity_rows_in_page, $_GET['orderBy'],null);
-                               //  }elseif (isset($_GET['formatOrder'])) {
-                               //      $query = pageMovies($start_from, $quantity_rows_in_page, null,$_GET['formatOrder']);
-                               //  }else {
-                               //      $query = pageMovies($start_from, $quantity_rows_in_page, null,null);
-                              //   }
-                                 //echo "<pre>";var_dump($_GET['orderBy'],$_GET['formatOrder'],$query);exit();
-                                 //echo '<pre>'; var_dump($query); exit();
                                  $result = mysqli_query($link, $query);
-                                 //echo '<pre>'; var_dump($result); exit();
-                                 //Crea un bluce 'while' y define a la variable 'datos' ($row) como clave del array
-                                 //que mostrará los resultados por nombre
+
                                  while($row = mysqli_fetch_assoc($result)) {
                                      echo "<div class='row'>";
                                      echo "<span class='imagen-index col s10 m10 l4'><img src='./functions/showImage.php?idMovie=".$row['id']."'></span>"; // aca va la imagen desde el sql pero misteriosamente no funiona

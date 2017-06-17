@@ -47,7 +47,7 @@
                             </div>
                         </div>
                         <div class="modal-footer ">
-                            <button type="submit" class="btn btn-default modal-action modal-close marco-space">Login</button>
+                            <button type="submit" class="btn btn-default modal-action modal-close marco-space" onclick="validateLogin">Login</button>
                             <button type="button" class="waves-effect waves-green btn-flat modal-action modal-close marco-space">Cerrar</button>
                         </div>
                     </form>

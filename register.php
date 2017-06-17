@@ -46,7 +46,7 @@
                      </div>
                      <div class="row campo white">
                          <div class="input-field col s10 m5 l6">
-                             <input id="userName" type="text" name="userName"  required>
+                             <input id="userName" type="text" name="userName" required>
                              <label for="userName">Usuario</label>
                          </div>
                          <div class="campo-aclaracion">
@@ -55,7 +55,7 @@
                      </div>
                      <div class="row campo white">
                          <div class="input-field col s10 m5 l6">
-                             <input id="contraseña" type="text" name="contraseña" required>
+                             <input id="contraseña" type="password" name="contraseña" required>
                              <label for="contraseña">Contraseña</label>
                          </div>
                          <div class="campo-aclaracion">
@@ -64,7 +64,7 @@
                      </div>
                      <div class="row campo white">
                          <div class="input-field col s10 m5 l6">
-                             <input id="recontraseña" type="text" name="recontraseña" required>
+                             <input id="recontraseña" type="password" name="recontraseña" required>
                              <label for="recontraseña">Re-Contraseña</label>
                          </div>
 
@@ -108,9 +108,8 @@
      </div>
 
      <footer>
-         <script type="text/javascript" src='./js/functions.js'></script>
          <?php
-        require_once('./layout/footer.php');
+         require_once('./layout/footer.php');
           ?>
      </footer>
 </body>
