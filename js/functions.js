@@ -1,4 +1,19 @@
 //Nombramos la función
+function checkPassword(password, rePassword){
+    if (password == rePassword.value) {
+        if ( password.length > 5 ){
+            if (/[a-z]/.test(password){
+                if (/[A-Z]/.test(password)) {
+                    if ((/[0-9]/.test(password) || /\W/.test(password))) {
+                        return true;
+                    }
+                }
+            }
+        }
+    }
+    return false;
+}
+
 function validate(){
 
     //Definimos los caracteres permitidos en una dirección de correo electrónico
@@ -20,11 +35,9 @@ function validate(){
         return 0;
     }
 
-    if (document.getElementById('contraseña').value == document.getElementById('recontraseña').value) {
-        if( ( !document.getElementById('contraseña').value.length > 5 && !/[a-z]/.test(document.getElementById('contraseña').value) && !/[A-Z]/.test(document.getElementById('contraseña').value) ) &&  !(/[0-9]/.test(document.getElementById('contraseña').value) || /\W/.test(document.getElementById('contraseña').value)) ) {
-            alert("El campo Contraseña no coincide con lo esperado. Modifiquelo y vuelva a intentar.");
-            return 0;
-        }
+
+    alert('la contraseña esta mal capo!');
+
         if(document.getElementById('recontraseña').value.length > 5 && !(/[a-z]/.test(document.getElementById('contraseña').value)) && !(/[A-Z]/.test(document.getElementById('contraseña').value)) && !(/[0-9]|\W/.test(document.getElementById('contraseña').value)) ) {
             alert("El campo Re-Contraseña no coincide con lo esperado. Modifiquelo y vuelva a intentar.");
             return 0;
