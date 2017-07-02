@@ -123,4 +123,12 @@ function movieDetail($id){
 
         return $sql;
     }
+
+    function getGenre($genero_id){
+      $sql="SELECT genero
+            FROM generos
+            WHERE id = '$genero_id'";
+
+      return $sql;
+    }
 ?>

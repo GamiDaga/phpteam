@@ -22,6 +22,10 @@ require_once('./functions/functions.php');
             $result = mysqli_query($link,$query);
             $row = mysqli_fetch_array($result);
 
+            $queryG = getGenre($row['generos_id']);
+            $resultG = mysqli_query($link, $queryG);
+            $genre = mysqli_fetch_array($resultG);
+
             echo "
             <div class='row'>
                 <span class='imagen-index'><img src='./functions/showImage.php?idMovie=".$row['id']."'></span>
@@ -31,7 +35,7 @@ require_once('./functions/functions.php');
                         <p>".number_format(calification($row['id']), 2, ".", ",")."
                         <i class='material-icons'>star rate</i></p>
                     </div>
-                    <p>".$row['anio']."</p>
+                    <p>".$row['anio'],'  ', $genre['genero']."</p>
                     <p>".$row['sinopsis']."</p>
                 </div>
             </div>
