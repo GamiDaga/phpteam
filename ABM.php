@@ -56,6 +56,10 @@ if (isset($_SESSION['log']) && $_SESSION['log'] == true && $_SESSION['admin'] ==
         break;
 
         case 'deleteMovie':
+             $query1 = deleteComments($_POST['idMovie']);
+             $result1 = mysqli_query($link, $query1);
+
+             
              $query = deleteMovie($_POST['idMovie']);
              $result = mysqli_query($link, $query);
              if ($result) {

@@ -1,7 +1,7 @@
 <?php
 
   function connect(){
-       $mysqli = mysqli_connect('localhost', 'root', 'root','phpteam') or die ("Error ".mysqli_error($mysqli));
+       $mysqli = mysqli_connect('localhost', 'root', '','phpteam') or die ("Error ".mysqli_error($mysqli));
        return $mysqli;
   }
 

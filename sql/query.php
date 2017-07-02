@@ -67,6 +67,11 @@ function movieDetail($id){
              WHERE id = '$id' ";
       return $sql;
   }
+    function deleteComments($id){
+      $sql ="DELETE FROM comentarios
+             WHERE peliculas_id = '$id' ";
+      return $sql;
+  }
 
   function register($apellido, $nombre, $usuario, $contraseña, $email){
       $sql =" INSERT INTO usuarios (apellido, nombre, nombreusuario, password, email, administrador)
