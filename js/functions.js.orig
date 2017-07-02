@@ -1,15 +1,29 @@
 //Nombramos la función
+<<<<<<< HEAD
+function checkPassword(password, rePassword){
+    if (password == rePassword.value) {
+        if ( password.length > 5 ){
+            if (/[a-z]/.test(password){
+                if (/[A-Z]/.test(password)) {
+                    if ((/[0-9]/.test(password) || /\W/.test(password))) {
+                        return true;
+                    }
+                }
+            }
+        }
+    }
+    return false;
+=======
 
 function checkPassword(password) {
     if(password.length > 5 && (/[a-z]/.test(password))){
         if (/[A-Z]/.test(password)) {
             if ((/[0-9]/.test(password) || /\W/.test(password))) {
-                return true;
-            }else { return false; }
-        }else { return false; }
-    }else {
-      return false;
-    }
+                return 1;
+            }else { return 0; }
+        }else { return 0; }
+    }else { return 0; }
+>>>>>>> a2df50a88bdfdb9d1d152e5b323e6200c1509942
 }
 
 function validate(){
@@ -20,39 +34,43 @@ function validate(){
     //Validamos un campo o área de texto, por ejemplo el campo nombre
     if ((document.getElementById('lastname').value.length < 1) && (!(/^[a-zA-Z-]+$/.test(document.getElementById('lastname').value)))){
         alert("El campo Apellido no coincide con lo esperado. Modifiquelo y vuelva a intentar.");
-        return false;
+        return 0;
     }
 
     if ( (document.getElementById('name').value.length < 1) &&  !(/^[a-zA-Z-]+$/.test(document.getElementById('name').value) )  ){
         alert("El campo Nombre no coincide con lo esperado. Modifiquelo y vuelva a intentar.");
-        return false;
+        return 0;
     }
 
     if ((document.getElementById('userName').value.length < 6) && !(/^[a-zA-Z0-9-]+$/.test(document.getElementById('userName').value)) ){
         alert("El campo Usuario no coincide con lo esperado. Modifiquelo y vuelva a intentar.");
-        return false;
+        return 0;
     }
-    if (document.getElementById('recontraseña').value.length != 0 || document.getElementById('recontraseña').value.length != 0) {
-        if (document.getElementById('contraseña').value == document.getElementById('recontraseña').value) {
-            if(!checkPassword(document.getElementById('contraseña').value)){
-                alert("El campo Contraseña y su repeticion no coinciden. Modifiquelo y vuelva a intentar.");
-                return false;
-            }
-        }else {
-            alert("El campo Contraseña y su repeticion no coinciden. Modifiquelo y vuelva a intentar.");
-            return false;
+
+<<<<<<< HEAD
+
+    alert('la contraseña esta mal capo!');
+
+        if(document.getElementById('recontraseña').value.length > 5 && !(/[a-z]/.test(document.getElementById('contraseña').value)) && !(/[A-Z]/.test(document.getElementById('contraseña').value)) && !(/[0-9]|\W/.test(document.getElementById('contraseña').value)) ) {
+            alert("El campo Re-Contraseña no coincide con lo esperado. Modifiquelo y vuelva a intentar.");
+            return 0;
         }
+=======
+    if (document.getElementById('contraseña').value == document.getElementById('recontraseña').value) {
+        checkPassword(document.getElementById('contraseña').value);
+>>>>>>> a2df50a88bdfdb9d1d152e5b323e6200c1509942
     }else {
-        alert("El campo Contraseña o su repeticion esta vacio. Modifiquelo y vuelva a intentar.");
-        return false;
+        alert("El campo Contraseña y su repeticion no coinciden. Modifiquelo y vuelva a intentar.");
+        return 0;
     }
 
     //Validamos un campo de texto como email
     if ( ((regexp.test(document.getElementById('email').value) == 0) || (document.getElementById('email').value.length == 0)) ){
         alert("El campo Email no coincide con lo esperado. Modifiquelo y vuelva a intentar.");
-        return false;
+        return 0;
     }
-
+    //Si todos los campos han validado correctamente, se envía el formulario
+    document.form.submit();
 }
 //
 // En  el  registro  deberá  haber  un  formulario  que
@@ -79,9 +97,11 @@ function validate(){
 
 function validateComments() {
 
-    if ( (document.getElementById('comments').value.length == 0) || (document.getElementById('comments').value.length > 255) ){
+    if ( (function () {
+
+    }) || (document.getElementById('comments').value.length > 255) ){
         alert("El comentario no debe estar vacio o tener mas de 255 caracteres. Modifiquelo y vuelva a intentar.");
-        return false;
+        return 0;
     }else {
         document.form.submit();
 
@@ -91,10 +111,10 @@ function validateComments() {
 
    function validateLogin() {
        if (document.getElementById('user').length < 6 && !/^[a-zA-Z0-9-]+$/.test(document.getElementById('user'))) {
-           return false;
+           return 0;
        }
        if (document.getElementById('password').length < 6 && !checkPassword(document.getElementById('password')))  {
-           return false;
+           return 0;
        }
        document.form.submit();
    }
@@ -102,7 +122,7 @@ function validateComments() {
    function validateABM() {
        // ABM, update y create
        if ((document.getElementById('title') != "" &&  document.getElementById('title').length < 255 && document.getElementById('year') != "" && document.getElementById('idGenero') != "" && document.getElementById('synopsis') != "")) {
-           return false;
+           return 0;
        }
        document.form.submit();
    }

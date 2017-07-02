@@ -25,18 +25,18 @@
              <div class="row formulario-registro">
                  <h1>Registro</h1>
 
-                 <form class="col s12" action="./ABM.php" method="post">
+                 <form class="col s12" action="./ABM.php" method="post" onsubmit="return validate(this)">
 
                      <input type="hidden" name="operation" value="register">
 
                      <div class="row campo white">
                          <div class="input-field col s10 m5 l6">
-                             <input id="lastname" type="text" name="lastname" required>
+                             <input id="lastname" type="text" name="lastname" >
                              <label for="lastname">Apellido</label>
                          </div>
 
                          <div class="input-field col s10 m5 l6">
-                             <input id="name" type="text" name="name" required>
+                             <input id="name" type="text" name="name" >
                              <label for="name">Nombre</label>
                          </div>
                          <div class="campo-aclaracion">
@@ -46,7 +46,7 @@
                      </div>
                      <div class="row campo white">
                          <div class="input-field col s10 m5 l6">
-                             <input id="userName" type="text" name="userName"  required>
+                             <input id="userName" type="text" name="userName" >
                              <label for="userName">Usuario</label>
                          </div>
                          <div class="campo-aclaracion">
@@ -55,7 +55,7 @@
                      </div>
                      <div class="row campo white">
                          <div class="input-field col s10 m5 l6">
-                             <input id="contraseña" type="text" name="contraseña" required>
+                             <input id="contraseña" type="password" name="contraseña" >
                              <label for="contraseña">Contraseña</label>
                          </div>
                          <div class="campo-aclaracion">
@@ -64,7 +64,7 @@
                      </div>
                      <div class="row campo white">
                          <div class="input-field col s10 m5 l6">
-                             <input id="recontraseña" type="text" name="recontraseña" required>
+                             <input id="recontraseña" type="password" name="recontraseña" >
                              <label for="recontraseña">Re-Contraseña</label>
                          </div>
 
@@ -75,7 +75,7 @@
                              <label for="email" data-error="wrong" data-success="right">Email</label>
                          </div>
                      </div>
-                     <input type="submit" id="enviar" class="btn btn-submit" onclick="validate()" /> <!-- onclick="validate()" -->
+                     <input type="submit" id="enviar" class="btn btn-submit" /> <!-- onclick="validate()" -->
                  </form>
              </div>
 
@@ -108,9 +108,8 @@
      </div>
 
      <footer>
-         <script type="text/javascript" src='./js/functions.js'></script>
          <?php
-        require_once('./layout/footer.php');
+         require_once('./layout/footer.php');
           ?>
      </footer>
 </body>

@@ -7,7 +7,7 @@ function movie(){
     return $sql;
   }
 
-function pageMovies($start_from, $quantityPages,$orderBy = "null",$formatOrder = "", $search="", $genre="", $year="" ){
+function pageMovies($start_from, $quantityPages,$orderBy = "nombre",$formatOrder = "ASC", $search="", $genre="", $year="" ){
     if ($orderBy == null) {
       $orderBy = "null";
     }
