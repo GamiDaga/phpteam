@@ -52,11 +52,11 @@
 
                  <div class='input-field col s12'>
                      <select name='idGenero'>";
-                         while($row2 = mysqli_fetch_assoc($result2)) {
-                             if ($_POST['generos_id'] != $row2['id']){
-                                 echo "<option value='".$row2['id']."'> ".$row2["genero"]." </option>";
+                        while($row2 = mysqli_fetch_assoc($result2)) {
+                             if ($row['generos_id'] == $row2['id']){
+                                 echo "<option value='".$row2['id']."' disabled selected>".$row2["genero"]."</option>";  
                              }else{
-                                 echo "<option value='".$row2['id']."' selected=".$_POST['generos_id'].">".$row2["genero"]."</option>";
+                                 echo "<option value='".$row2['id']."'> ".$row2["genero"]." </option>";
                              }
                          }
 

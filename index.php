@@ -199,8 +199,17 @@
                                   //echo '<pre>'; var_dump($query); exit();
                                  $result = mysqli_query($link, $query);
 
+                                $field = '*';
+                                $table = 'generos';
+                                $queryG = getAny($field,$table);
+                                $resultG = mysqli_query($link, $queryG);
+
+                                while($row1= mysqli_fetch_assoc($resultG)) {
+                                $tabla_generos[$row1['id']] = $row1['genero'];}
+
                                  while($row = mysqli_fetch_assoc($result)) {
-                                     echo "<div class='row'>";
+
+                                    echo "<div class='row'>";
                                      echo "<span class='imagen-index col s10 m10 l4'><img src='./functions/showImage.php?idMovie=".$row['id']."'></span>"; // aca va la imagen desde el sql pero misteriosamente no funiona
                                      echo "
                                      <div class='info-pelicula col s10 m10 l6'>
@@ -209,7 +218,7 @@
                                              <p>".number_format(calification($row['id']), 2, ".", ",")."
                                              <i class='material-icons'>star rate</i></p>
                                          </div>
-                                         <p>".$row['anio']."</p>
+                                         <p>".$row['anio'],' ', $tabla_generos[$row['generos_id']]."</p>
                                          <p>".$row['sinopsis']."</p>
                                      </div>
                                      <div class='info-pelicula col s10 m10 l6'>
