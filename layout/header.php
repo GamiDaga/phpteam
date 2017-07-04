@@ -36,13 +36,13 @@
 
                             <div class="row campo white">
                                 <div class="input-field col s10 m5 l6">
-                                    <input id="userName" type="text" name="userName" class="validate">
-                                    <label for="userName">Usuario</label>
+                                    <input id="userNameLog" type="text" name="userNameLog" class="validate">
+                                    <label for="userNameLog">Usuario</label>
                                 </div>
 
                                 <div class="input-field col s10 m5 l6">
-                                    <input id="contraseña" type="password" name="contraseña" class="validate">
-                                    <label for="contraseña">Contraseña</label>
+                                    <input id="contraseñaLog" type="password" name="contraseñaLog" class="validate">
+                                    <label for="contraseñaLog">Contraseña</label>
                                 </div>
                             </div>
                         </div>

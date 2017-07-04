@@ -38,20 +38,20 @@
 
              <div class='row campo white'>
                  <div class='input-field col s10 m5 l6'>
-                     <input id='titulo' type='text' name='titulo' value='". $row['nombre'] ."' class='validate' required>
-                     <label for='titulo'>Titulo</label>
+                     <input id='title' type='text' name='title' value='". $row['nombre'] ."' class='validate' required>
+                     <label for='title'>Titulo</label>
                  </div>
 
                  <div class='input-field col s10 m5 l6'>
-                     <input id='anio' type='text' name='anio' value='". $row['anio'] ."' class='validate' required>
-                     <label for='anio'>Año</label>
+                     <input id='year' type='text' name='year' value='". $row['anio'] ."' class='validate' required>
+                     <label for='year'>Año</label>
                  </div>
 
                  <div class='input-field col s12'>
-                     <select name='idGenero'>";
+                     <select id='idGenero' name='idGenero'>";
                         while($row2 = mysqli_fetch_assoc($result2)) {
                              if ($row['generos_id'] == $row2['id']){
-                                 echo "<option value='".$row2['id']."' disabled selected>".$row2["genero"]."</option>";  
+                                 echo "<option value='".$row2['id']."' selected>".$row2["genero"]."</option>";  
                              }else{
                                  echo "<option value='".$row2['id']."'> ".$row2["genero"]." </option>";
                              }

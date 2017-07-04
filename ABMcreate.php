@@ -27,12 +27,12 @@
                     <div class="row campo white">
                         <div class="input-field col s10 m5 l6">
 
-                            <input id="title" type="text" name="title" value="" class="validate" required>
+                            <input id="title" type="text" name="title" value="" >
                             <label for="title">Titulo</label>
                         </div>
 
                         <div class="input-field col s10 m5 l6">
-                            <input id="year" type="text" name="year" value="" class="validate" required>
+                            <input id="year" type="text" name="year" value="" >
                             <label for="year">Año</label>
                         </div>
 
@@ -45,7 +45,7 @@
                             $result = mysqli_query($link, $query);
                             ?>
 
-                            <select name="idGenero">
+                            <select id="idGenero" name="idGenero">
                                 <option value="" disabled selected>Generos</option>
                                 <?php
                                 while($row = mysqli_fetch_assoc($result)) {
@@ -58,8 +58,8 @@
 
 
                         <div class="input-field col s12">
-                            <textarea id="sinopsis" name="synopsis" class="materialize-textarea"></textarea>
-                            <label for="sinopsis">Sinopsis</label>
+                            <textarea id="synopsis" name="synopsis" class="materialize-textarea"></textarea>
+                            <label for="synopsis">Sinopsis</label>
                         </div>
                         <div class="file-field col s12">
                             <!-- <div class="btn">
@@ -71,7 +71,7 @@
                             </div> -->
                         </div>
                         <input type="file" id="image" name="image" value="" onchange="ValidarImagen(this);">
-                        <button type='submit' class='btn btn-submit right hide-on-med-and-down'>Crear</button>
+                        <button type='submit' class='btn right hide-on-med-and-down'>Crear</button>
 
                         
                     </form>

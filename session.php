@@ -6,17 +6,17 @@
     echo "<header>";
     require_once('./layout/header.php');
     echo "</header>";
-  if (!isset($_POST["userName"]) || !isset($_POST["contraseña"])) {
+  if (!isset($_POST["userNameLog"]) || !isset($_POST["contraseñaLog"])) {
     echo "<div class='AlgoMal'>";
     echo "  <h2>Algo anduvo mal</h2>";
     echo "  <p>No se recibió un usuario o contraseña para loguearse</p>";
-    echo "  <br><a class='btn ' href='./index.php'>volver al Inicio</a>";
+    echo "  <br><a class='btn ' href='./index.php'>Volver al Inicio</a>";
     echo "</div>";
   }else{
     try {
 
-      $userName = htmlspecialchars($_POST["userName"],ENT_QUOTES);
-      $password = htmlspecialchars($_POST["contraseña"],ENT_QUOTES);   //para evitar sql injection
+      $userName = htmlspecialchars($_POST["userNameLog"],ENT_QUOTES);
+      $password = htmlspecialchars($_POST["contraseñaLog"],ENT_QUOTES);   //para evitar sql injection
 
 
       $user = new user;
@@ -36,7 +36,7 @@
       echo "<div class='AlgoMal'>";
       echo "  <h2>Algo anduvo mal</h2>";
       echo "  <p>El usuario o contraseña es incorrecta</p>";
-      echo "  <br><a class='btn ' href='./index.php'>volver al Inicio</a>";
+      echo "  <br><a class='btn ' href='./index.php'>Volver al Inicio</a>";
       echo "</div>";
 
     }

@@ -92,14 +92,14 @@ function validateComments() {
 }
 
 function validateLogin() {
-    if (document.getElementById('userName').value.length < 6 || /\W/.test(document.getElementById('userName').value)) {
+    if (document.getElementById('userNameLog').value.length < 6 || /\W/.test(document.getElementById('userNameLog').value)) {
         alert("El usuario debe contener al menos 6 caracteres alfanuméricos (a-z A-Z 0-9)")
         return false;
     }
-    if (document.getElementById('contraseña').value.length = 0){
+    if (document.getElementById('contraseñaLog').value.length = 0){
         alert("El campo Contraseña esta vacio.");
         return false;
-    }else if (!checkPassword(document.getElementById('contraseña').value)){
+    }else if (!checkPassword(document.getElementById('contraseñaLog').value)){
             return false;
     }
 }
@@ -107,20 +107,20 @@ function validateLogin() {
 
 function validateABM() {
   // ABM, update y create
-    if (document.getElementById('title').value != "" || document.getElementById('title').value.length < 255){
+    if (document.getElementById('title').value = "" || document.getElementById('title').value.length > 255){
         alert("El titulo no debe estar vacio o tener mas de 255 caracteres. Modifiquelo y vuelva a intentar.");
         return false;
     }   
-    if(document.getElementById('year').value != "" ){
+    if(document.getElementById('year').value = "" ){
         alert("El anño no debe estar vacio . Modifiquelo y vuelva a intentar.");
         return false;
     }
-    if(document.getElementById('idGenero').value != "" ){
+    if(document.getElementById('idGenero').value = "" ){
         alert("El genero no debe estar vacio. Modifiquelo y vuelva a intentar.");
         return false;
 
     }
-    if(document.getElementById('synopsis').value != ""){
+    if(document.getElementById('synopsis').value = ""){
         alert("La sinopsis no debe estar vacio. Modifiquelo y vuelva a intentar.");
         return false;
     }

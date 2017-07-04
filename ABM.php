@@ -25,12 +25,13 @@ if (!isset($_POST['operation'])) {
         switch ($_POST['operation']) {
 
             case 'createMovie':
+            if (isset($_POST['title']) && isset($_POST['year']) && isset($_POST['idGenero']) && isset($_POST['synopsis']) ){
 
                 if (($_POST['title'] != "") &&  (strlen($_POST['title']) < 255) && ($_POST['year'] != "") && ($_POST['idGenero'] != "") && ($_POST['synopsis'] != "") && ($_FILES['image']['size'] > 0)) {
 
                     $ext = $_FILES['image']['type'];
 
-                    //vALIDAR TIPO IMAGEN
+                    //VALIDAR TIPO IMAGEN
 
 
                     $fp = fopen($_FILES['image']['tmp_name'], 'rb'); //Abrimos la imagen que viene por $_FILES
@@ -57,12 +58,14 @@ if (!isset($_POST['operation'])) {
                     echo "  <p>Alguno de los campos no cumple con los requisitos o esta vacio</p>";
                     echo "  <br><a class='btn ' href='./ABMcreate.php'>volver a Crear</a>";
                     echo "</div>";   
+                    echo "<pre>"; var_dump($_POST['title'],$_POST['title'],$_POST['year'],$_POST['idGenero'],$_POST['synopsis']);
                 }
+            }
             break;
 
             case 'updateMovie':
                 if (isset($_POST['idMovie'])){
-                    if (isset($_POST['title']) && isset($_POST['title']) && isset($_POST['year']) && isset($_POST['idGenero']) && isset($_POST['synopsis']) ){
+                    if (isset($_POST['title']) && isset($_POST['year']) && isset($_POST['idGenero']) && isset($_POST['synopsis']) ){
 
                         if (($_POST['title'] != "") &&  (strlen($_POST['title']) < 255) && ($_POST['year'] != "") && ($_POST['idGenero'] != "") && ($_POST['synopsis'] != "") ) {
                             $qimage ="";
@@ -74,7 +77,7 @@ if (!isset($_POST['operation'])) {
                                  fclose($fp);
                                  $qimage = ", contenidoimagen = '".$image."' , tipoimagen = ' ".$ext." ' " ;
                              }
-                            $query = updateMovie($_POST['idMovie'],$_POST['titulo'],$_POST['anio'],$_POST['idGenero'],$_POST['synopsis'],$qimage);
+                            $query = updateMovie($_POST['idMovie'],$_POST['title'],$_POST['year'],$_POST['idGenero'],$_POST['synopsis'],$qimage);
                             $result = mysqli_query($link, $query);
 
                             if ($result) {
@@ -85,7 +88,7 @@ if (!isset($_POST['operation'])) {
                                 echo "  <p>La edicion de la película no se ha realizado por una coneccion fallida</p>";
                                 echo "  <br>
                                         <form action='./ABMupdate.php' method='post'>
-                                            <input type='hidden' name='idMovie' value='".$row['id']."'>
+                                            <input type='hidden' name='idMovie' value='".$_POST['idMovie']."'>
                                             <button  class='btn'>Volver a editar</button>
                                         </form>";
                                 echo "</div>";
@@ -96,7 +99,7 @@ if (!isset($_POST['operation'])) {
                             echo "  <p>Alguno de los campos no cumple con los requisitos o esta vacio</p>";
                             echo "  <br>
                                     <form action='./ABMupdate.php' method='post'>
-                                        <input type='hidden' name='idMovie' value='".$row['id']."'>
+                                        <input type='hidden' name='idMovie' value='".$_POST['idMovie']."'>
                                         <button  class='btn'>Volver a editar</button>
                                     </form>";
                             echo "</div>";
@@ -107,7 +110,7 @@ if (!isset($_POST['operation'])) {
                         echo "  <p>Alguno de los campos no fue declarado para la edición</p>";
                         echo "  <br>
                                 <form action='./ABMupdate.php' method='post'>
-                                    <input type='hidden' name='idMovie' value='".$row['id']."'>
+                                    <input type='hidden' name='idMovie' value='".$_POST['idMovie']."'>
                                     <button  class='btn'>Volver a editar</button>
                                 </form>";
                         echo "</div>";
