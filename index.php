@@ -22,11 +22,6 @@
 
      <div class="contenedor ">
 
-         <div class="parallax-container">
-             <div class="parallax"><img src="./images/background.jpg"></div>
-         </div>
-
-
              <div id="filter-nav" class="menu">
                      <form id="filters" action="./index.php" methode="get">
 
@@ -126,9 +121,7 @@
                      <div class="navButton">
                          <?php
                          if (isset($_SESSION['log']) && $_SESSION['log'] == true && $_SESSION['admin'] == true) {
-                                echo "<form action='./ABMcreate.php' method='post'>
-                                         <button  class='btn'>Crear</button>
-                                      </form>";
+                                echo "<a class='btn ' href='./ABMcreate.php'>Crear</a>";
                          }
                           ?>
                      </div>

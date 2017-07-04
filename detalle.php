@@ -7,14 +7,22 @@ require_once('./functions/functions.php');
 <body>
     <header>
         <?php
-        require_once('./layout/header.php');
+        echo "<header>";
+            require_once('./layout/header.php');
+        echo "</header>";
         $link = connect();
         ?>
     </header>
+    <?php 
+        if (!isset($_GET['idMovie'])) {
+        echo "<div class='AlgoMal'>";
+        echo "  <h2>Algo anduvo mal</h2>";
+        echo "  <p>No se encontro la pagina detalles de la pelicula</p>";
+        echo "  <br><a class='btn ' href='./index.php'>volver al index</a>";
+        echo "</div>";
+    }else{
+     ?>
 
-    <div class="parallax-container">
-        <div class="parallax"><img src="./images/background.jpg"></div>
-    </div>
     <div class="contenedor">
         <div class="pelicula">
             <?php
@@ -64,7 +72,7 @@ require_once('./functions/functions.php');
                         echo '
 
                         <div class="row">
-                            <form class="" action="./addComments.php" method="post" onsubmit="">
+                            <form class="" action="./addComments.php" method="post" onsubmit="return validateComments(this)">
                                 <input type="hidden" name="userId" value="'.$_SESSION['id'].'">
                                 <input type="hidden" name="idMovie" value="'.$_GET['idMovie'].'">
                                 <input type="hidden" name="date" value="'.date("Y/m/d").'">
@@ -86,7 +94,7 @@ require_once('./functions/functions.php');
                                     <label for="comments">Comentar</label>
                                     <br>
                                 </div>
-                                <button type="" value="" class="btn right hide-on-med-and-down" onclick="validateComments()">Comentar</button>
+                                <button type="" value="" class="btn right hide-on-med-and-down">Comentar</button>
                             </form>
                         </div>
                         ';
@@ -145,6 +153,7 @@ require_once('./functions/functions.php');
             <!-- FIN DE LISTA DE COMENTARIOS  -->
             <!-- FIN DE SECCION DE COMENTARIOS -->
     </div>
+   <?php  } ?>
 
     <footer>
         <script type="text/javascript" src='./js/functions.js'></script>

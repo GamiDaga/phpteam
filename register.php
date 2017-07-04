@@ -7,17 +7,15 @@
  <body>
      <header>
          <?php
-         require_once('./layout/header.php');
+        echo "<header>";
+            require_once('./layout/header.php');
+        echo "</header>";
          $link = connect();
          ?>
      </header>
 
 
      <div class="contenedor ">
-
-         <div class="parallax-container">
-             <div class="parallax"><img src="./images/background.jpg"></div>
-         </div>
 
 
 
@@ -59,7 +57,7 @@
                              <label for="contraseña">Contraseña</label>
                          </div>
                          <div class="campo-aclaracion">
-                             <p> Debe contener al menos 6 caracteres, una letra mayúscula, una minúscula y un número o un símbolo (ej, $, @, etc).</p>
+                             <p> Debe contener al menos 6 caracteres, una letra mayúscula, una minúscula y un número o un símbolo (ej: $, @, etc).</p>
                          </div>
                      </div>
                      <div class="row campo white">
@@ -75,7 +73,7 @@
                              <label for="email" data-error="wrong" data-success="right">Email</label>
                          </div>
                      </div>
-                     <input type="submit" id="enviar" class="btn btn-submit" /> <!-- onclick="validate()" -->
+                     <input type="submit" value="Registrarse" id="enviar" class="btn btn-submit"/> <!-- onclick="validate()" -->
                  </form>
              </div>
 

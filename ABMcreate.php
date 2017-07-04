@@ -7,22 +7,20 @@
 <body>
     <header>
         <?php
-        require_once('./layout/header.php');
+
+        echo "<header>";
+            require_once('./layout/header.php');
+        echo "</header>";
         if (isset($_SESSION['log']) && $_SESSION['log'] == true && $_SESSION['admin'] == true) {
 
         $link = connect();
         ?>
     </header>
 
-    <div class="contenedor ">
-        <div class="parallax-container">
-            <div class="parallax"><img src="./images/background.jpg"></div>
-        </div>
-
 
         <div class="container">
             <div class="row white formulario-registro">
-                <form class="col s12" action="./ABM.php" method="post" enctype="multipart/form-data">
+                <form class="col s12" action="./ABM.php" method="post" enctype="multipart/form-data" onsubmit="return validateABM(this)">
 
                     <input type="hidden" name="operation" value="createMovie">
 
@@ -72,7 +70,7 @@
                                 <input name="imageName" class="file-path validate" type="text">
                             </div> -->
                         </div>
-                        <input type="file" name="image" value="">
+                        <input type="file" id="image" name="image" value="" onchange="ValidarImagen(this);">
                         <button type='submit' class='btn btn-submit right hide-on-med-and-down'>Crear</button>
 
                         
@@ -80,11 +78,11 @@
                 </div>
             </div>
         <?php }else {
-            echo "Debe estar logueado como administrador para acceder a esta pagina";
-            echo "
-                <form action='./index.php' method='post'>
-                    <button type='submit' name='button'>Volver al index</button>
-                </form> ";
+                echo "<div class='AlgoMal'>";
+                echo "  <h2>Algo anduvo mal</h2>";
+                echo "<p>Debe estar logueado como administrador para acceder a esta pagina</p>";
+                echo "  <br><a class='btn ' href='./index.php'>volver al index</a>";
+                echo "</div>";
         }
 
 

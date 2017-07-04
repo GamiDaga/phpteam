@@ -6,8 +6,9 @@
 <body>
     <header>
         <?php
-
-        require_once('./layout/header.php');
+        echo "<header>";
+            require_once('./layout/header.php');
+        echo "</header>";
         if (isset($_SESSION['log']) && $_SESSION['log'] == true && $_SESSION['admin'] == true) {
 
         $link = connect();
@@ -15,10 +16,6 @@
     </header>
 
   <div class="contenedor ">
-    <div class="parallax-container">
-        <div class="parallax"><img src="./images/background.jpg"></div>
-  </div>
-
 
      <?php
      $query = getMovie($_POST['idMovie']);
@@ -93,19 +90,20 @@
      ?>
     </div>
   </div>
-
+<?php
+    }else {
+        echo "<div class='AlgoMal'>";
+        echo "  <h2>Algo anduvo mal</h2>";
+        echo "  <p>Debe estar logueado como administrador para acceder a esta pagina</p>";
+        echo "  <br><a class='btn ' href='./index.php'>volver al index</a>";
+        echo "</div>";
+    }
+    ?>
   <footer>
     <script type="text/javascript" src='./js/phpteam.js'></script>
 
       <?php
         require_once('./layout/footer.php');
-    }else {
-        echo "Debe estar logueado como administrador para acceder a esta pagina";
-        echo "
-        <form action='./index.php' method='post'>
-        <button type='submit' name='button'>Volver al index</button>
-        </form> ";
-    }
         ?>
    </footer>
 </body>

@@ -8,7 +8,7 @@
     <div class="gris-1" >
 
         <div class="nav-wrapper"  >
-            <a href="./index.php" class="brand-logo"><img class="icon" src="./images/icon.png" alt=""></a>
+            <a href="./index.php" class="logo"><img class="icon" src="./images/icon.png" alt=""></a>
             <?php if (isset($_SESSION['log']) && ($_SESSION['log'] == true)): ?>
                 <ul class="right">
                     <li><a href="#" data-activates="slide-out" class="button-sidenav"><i class="material-icons">account_circle</i></a></li>
@@ -18,7 +18,7 @@
             <?php if (!isset($_SESSION['log']) || ($_SESSION['log'] == false)): ?>
 
                 <!-- Modal Trigger -->
-                <ul class="right hide-on-med-and-down">
+                <ul class="right">
                     <li class="marco-space">
                         <button data-target="modal1" class="btn">Login</button>
                     </li>
@@ -29,25 +29,25 @@
 
                 <!-- Modal Structure -->
                 <div id="modal1" class="modal campo bottom-sheet">
-                    <form class="" action="session.php" method="post">
+                    <form class="" action="session.php" method="post" onsubmit="return validateLogin(this)">
                         <div class="modal-content">
                             <h4>Login</h4>
                             <p>Ingrese los siguientes datos.</p>
 
                             <div class="row campo white">
                                 <div class="input-field col s10 m5 l6">
-                                    <input id="user" type="text" name="user" class="validate" required>
-                                    <label for="user">Usuario</label>
+                                    <input id="userName" type="text" name="userName" class="validate">
+                                    <label for="userName">Usuario</label>
                                 </div>
 
                                 <div class="input-field col s10 m5 l6">
-                                    <input id="password" type="password" name="password" class="validate" required>
-                                    <label for="password1">Contraseña</label>
+                                    <input id="contraseña" type="password" name="contraseña" class="validate">
+                                    <label for="contraseña">Contraseña</label>
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer ">
-                            <button type="submit" class="btn btn-default modal-action modal-close marco-space" onclick="validateLogin">Login</button>
+                            <button type="submit" class="btn btn-default marco-space">Login</button>
                             <button type="button" class="waves-effect waves-green btn-flat modal-action modal-close marco-space">Cerrar</button>
                         </div>
                     </form>
@@ -103,3 +103,8 @@
         </div>
     </div>
 </nav>
+
+
+<div class="parallax-container">
+    <div class="parallax"><img src="./images/background.jpg"></div>
+</div>
