@@ -20,23 +20,22 @@
 
         <div class="container">
             <div class="row white formulario-registro">
-                <form class="col s12" action="./ABM.php" method="post" enctype="multipart/form-data" onsubmit="return validateABM(this)">
+                <form class="col s12" action="./ABM.php" method="post" enctype="multipart/form-data" onsubmit="return validateABMcreate(this)">
 
                     <input type="hidden" name="operation" value="createMovie">
 
                     <div class="row campo white">
                         <div class="input-field col s10 m5 l6">
 
-                            <input id="title" type="text" name="title" value="" >
+                            <input id="title" type="text" name="title" value="">
                             <label for="title">Titulo</label>
                         </div>
 
                         <div class="input-field col s10 m5 l6">
-                            <input id="year" type="text" name="year" value="" >
+                            <input id="year" type="text" name="year" value="">
                             <label for="year">Año</label>
                         </div>
-
-
+                    </div>
                         <div class="input-field col s12">
                             <?php
                             $field = '*';
@@ -70,10 +69,10 @@
                                 <input name="imageName" class="file-path validate" type="text">
                             </div> -->
                         </div>
-                        <input type="file" id="image" name="image" value="" onchange="ValidarImagen(this);">
-                        <button type='submit' class='btn right hide-on-med-and-down'>Crear</button>
+                        <input type="file" id="image" name="image" value="" onchange="validateImage(this)">
+                        <button type='submit' class='btn btn-submit right hide-on-med-and-down'>Crear</button>
 
-                        
+
                     </form>
                 </div>
             </div>

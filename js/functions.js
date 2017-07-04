@@ -1,15 +1,15 @@
 //Nombramos la función
 
 function checkPassword(password) {
-  if(password.length > 5){ 
-        if (/[a-z]/.test(password)){ 
+  if(password.length > 5){
+        if (/[a-z]/.test(password)){
               if (/[A-Z]/.test(password)){
                     if (/[0-9]/.test(password) || /\W/.test(password)){
                          return true;
-                    }else { 
+                    }else {
                         alert("La Contraseña debe tener al menos un numero o un simbolo. Modifiquelo y vuelva a intentar.");
                         return false;}
-                }else { 
+                }else {
                     alert("La Contraseña debe tener al menos un caracter en minuscula. Modifiquelo y vuelva a intentar.");
                     return false;}
             }else {
@@ -18,7 +18,7 @@ function checkPassword(password) {
       }else{
           alert("La Contraseña debe tener al menos 6 digitos. Modifiquelo y vuelva a intentar.");
           return false;}
-    return true;    
+    return true;
 }
 
 function validate(){
@@ -105,41 +105,76 @@ function validateLogin() {
 }
 
 
-function validateABM() {
+function validateABMupdate() {
   // ABM, update y create
-    if (document.getElementById('title').value = "" || document.getElementById('title').value.length > 255){
+    if (document.getElementById('title').value == "" || document.getElementById('title').value.length > 255){
         alert("El titulo no debe estar vacio o tener mas de 255 caracteres. Modifiquelo y vuelva a intentar.");
         return false;
-    }   
-    if(document.getElementById('year').value = "" ){
-        alert("El anño no debe estar vacio . Modifiquelo y vuelva a intentar.");
+    }
+    if(document.getElementById('year').value == "" ){
+        alert("El año no debe estar vacio . Modifiquelo y vuelva a intentar.");
         return false;
     }
-    if(document.getElementById('idGenero').value = "" ){
+    if(document.getElementById('idGenero').value == "" ){
         alert("El genero no debe estar vacio. Modifiquelo y vuelva a intentar.");
         return false;
 
     }
-    if(document.getElementById('synopsis').value = ""){
+    if(document.getElementById('synopsis').value == ""){
         alert("La sinopsis no debe estar vacio. Modifiquelo y vuelva a intentar.");
         return false;
     }
 }
 
-
-function ValidarImagen(obj){
+function validateImage(obj){
     var uploadFile = obj.files[0];
 
     if (!window.FileReader) {
         alert('El navegador no soporta la lectura de archivos');
-        return;
+        document.getElementById('image').value = "";
+        return false;
     }
 
     if (!(/\.(jpg|png|gif|jpeg)$/i).test(uploadFile.name)) {
         alert('El archivo a adjuntar no es una imagen o su extension es incompatible');
+        document.getElementById('image').value = "";
+        return false;
     }
-    
+
     if (uploadFile.size > 16777216){
         alert('El peso de la imagen no puede exceder los 16mb')
+        document.getElementById('image').value = "";
+        return false;
+    }
+    if (uploadFile.size == 0){
+        alert('Debe subir una imagen');
+        document.getElementById('image').value = "";
+        return false;
+    }
+}
+
+function validateABMcreate() {
+  // ABM, update y create
+    if (document.getElementById('title').value == "" || document.getElementById('title').value.length > 255){
+        alert("El titulo no debe estar vacio o tener mas de 255 caracteres. Modifiquelo y vuelva a intentar.");
+        return false;
+    }
+    if(document.getElementById('year').value == "" ){
+        alert("El año no debe estar vacio . Modifiquelo y vuelva a intentar.");
+        return false;
+    }
+    if(document.getElementById('idGenero').value == "" ){
+        alert("El genero no debe estar vacio. Modifiquelo y vuelva a intentar.");
+        return false;
+
+    }
+    if(document.getElementById('synopsis').value == ""){
+        alert("La sinopsis no debe estar vacio. Modifiquelo y vuelva a intentar.");
+        return false;
+    }
+
+    if (document.getElementById('image').value == 0) {
+        alert("Debe subir una imagen.");
+        return false;
     }
 }

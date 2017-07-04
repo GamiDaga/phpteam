@@ -21,7 +21,7 @@ if (!isset($_POST['operation'])) {
 }else{
     // echo "<pre>";var_dump($_FILES['operation']);exit();
     if (isset($_SESSION['log']) && $_SESSION['log'] == true && $_SESSION['admin'] == true) {
-        
+
         switch ($_POST['operation']) {
 
             case 'createMovie':
@@ -40,6 +40,7 @@ if (!isset($_POST['operation'])) {
                     fclose($fp);
 
                     $query = createMovie($_POST['title'],$_POST['year'],$_POST['idGenero'],$_POST['synopsis'],$image,$ext);
+
                     $result = mysqli_query($link, $query);
                     if ($result) {
                         $id = mysqli_insert_id($link);
@@ -57,9 +58,14 @@ if (!isset($_POST['operation'])) {
                     echo "  <h2>Algo anduvo mal</h2>";
                     echo "  <p>Alguno de los campos no cumple con los requisitos o esta vacio</p>";
                     echo "  <br><a class='btn ' href='./ABMcreate.php'>volver a Crear</a>";
-                    echo "</div>";   
-                    echo "<pre>"; var_dump($_POST['title'],$_POST['title'],$_POST['year'],$_POST['idGenero'],$_POST['synopsis']);
+                    echo "</div>";
                 }
+            }else{
+                echo "<div class='AlgoMal'>";
+                echo "  <h2>Algo anduvo mal</h2>";
+                echo "  <p>Alguno de los campos no esta declarado</p>";
+                echo "  <br><a class='btn ' href='./ABMcreate.php'>volver a Crear</a>";
+                echo "</div>";
             }
             break;
 

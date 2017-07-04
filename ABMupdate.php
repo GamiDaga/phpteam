@@ -15,7 +15,7 @@
         ?>
     </header>
 
-  <div class="contenedor ">
+  <div class="container">
 
      <?php
      $query = getMovie($_POST['idMovie']);
@@ -31,7 +31,7 @@
 
      <div class='row white formulario-registro'>
 
-         <form class='col s12' action='./ABM.php' method='post' enctype='multipart/form-data'>
+         <form class='col s12' action='./ABM.php' method='post' enctype='multipart/form-data' onsubmit='return validateABMupdate(this)'>
 
              <input type='hidden' name='operation' value='updateMovie'>
              <input type='hidden' name='idMovie' value='".$_POST['idMovie']."'>
@@ -51,7 +51,7 @@
                      <select id='idGenero' name='idGenero'>";
                         while($row2 = mysqli_fetch_assoc($result2)) {
                              if ($row['generos_id'] == $row2['id']){
-                                 echo "<option value='".$row2['id']."' selected>".$row2["genero"]."</option>";  
+                                 echo "<option value='".$row2['id']."' selected>".$row2["genero"]."</option>";
                              }else{
                                  echo "<option value='".$row2['id']."'> ".$row2["genero"]." </option>";
                              }
@@ -71,7 +71,7 @@
                  <div class='file-field col s12'>
                      <div class='btn'>
                          <span>Poster</span>
-                         <input type='file' name='image' value=''>
+                         <input type='file' name='image' onchange='validateImage(this)'>
                      </div>
                      <div class='file-path-wrapper'>
                          <input class='file-path validate' type='text'>
