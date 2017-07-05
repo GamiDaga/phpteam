@@ -203,7 +203,7 @@
                                  while($row = mysqli_fetch_assoc($result)) {
 
                                     echo "<div class='row'>";
-                                     echo "<span class='imagen-index col s10 m10 l4'><img src='./functions/showImage.php?idMovie=".$row['id']."'></span>"; // aca va la imagen desde el sql pero misteriosamente no funiona
+                                     echo "<span class='imagen-index'><img src='./functions/showImage.php?idMovie=".$row['id']."'></span>"; // aca va la imagen desde el sql pero misteriosamente no funiona
                                      echo "
                                      <div class='info-pelicula col s10 m10 l6'>
                                          <h3>".$row['nombre']."</h3>
@@ -214,7 +214,7 @@
                                          <p>".$row['anio'],' ', $tabla_generos[$row['generos_id']]."</p>
                                          <p>".$row['sinopsis']."</p>
                                      </div>
-                                     <div class='info-pelicula col s10 m10 l6'>
+                                     <div class='info-pelicula'>
                                          <form action='./detalle.php' method='get'>
                                             <input type='hidden' name='idMovie' value='".$row['id']."'>
                                             <button  class='btn'> Ver mas</button>

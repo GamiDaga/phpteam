@@ -27,7 +27,8 @@ if (!isset($_POST['operation'])) {
             case 'createMovie':
             if (isset($_POST['title']) && isset($_POST['year']) && isset($_POST['idGenero']) && isset($_POST['synopsis']) ){
 
-                if (($_POST['title'] != "") &&  (strlen($_POST['title']) < 255) && ($_POST['year'] != "") && ($_POST['idGenero'] != "") && ($_POST['synopsis'] != "") && ($_FILES['image']['size'] > 0)) {
+                if (($_POST['title'] != "") && (strlen($_POST['title']) < 255) && ($_POST['year'] != "") && ($_POST['idGenero'] != "") && ($_POST['synopsis'] != "") && ($_FILES['image']['size'] > 0)
+                    && ( $_FILES['image']['type'] == 'image/jpg' || $_FILES['image']['type'] == 'image/jpeg' || $_FILES['image']['type'] == 'image/gif' || $_FILES['image']['type'] == 'image/png')) {
 
                     $ext = $_FILES['image']['type'];
 
@@ -59,6 +60,7 @@ if (!isset($_POST['operation'])) {
                     echo "  <p>Alguno de los campos no cumple con los requisitos o esta vacio</p>";
                     echo "  <br><a class='btn ' href='./ABMcreate.php'>volver a Crear</a>";
                     echo "</div>";
+                    //var_dump($_FILES['image']['type']);
                 }
             }else{
                 echo "<div class='AlgoMal'>";

@@ -65,18 +65,9 @@
                      <textarea id='sinopsis' name='synopsis'class='materialize-textarea' value'". $row['sinopsis'] ."'>". $row['sinopsis'] ."</textarea>
                      <label for='sinopsis'>Sinopsis</label>
                  </div>
+                 <input type='file' class='btn' id='image' name='image' onchange='validateImage(this)'>
 
                  <span class='imagen-index col s8 offset-s4'><img src='./functions/showImage.php?idMovie=".$row['id']."'></span>
-
-                 <div class='file-field col s12'>
-                     <div class='btn'>
-                         <span>Poster</span>
-                         <input type='file' name='image' onchange='validateImage(this)'>
-                     </div>
-                     <div class='file-path-wrapper'>
-                         <input class='file-path validate' type='text'>
-                     </div>
-                 </div>
              </div>
             <button type='submit' class='btn btn-submit right hide-on-med-and-down'>Actualizar</button>
          </form>

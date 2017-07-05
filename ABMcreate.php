@@ -69,7 +69,7 @@
                                 <input name="imageName" class="file-path validate" type="text">
                             </div> -->
                         </div>
-                        <input type="file" id="image" name="image" value="" onchange="validateImage(this)">
+                        <input type="file" class="btn" id="image" name="image" value="" onchange="validateImage(this)">
                         <button type='submit' class='btn btn-submit right hide-on-med-and-down'>Crear</button>
 
 
