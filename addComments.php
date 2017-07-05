@@ -7,8 +7,8 @@ echo "<body>";
     echo "<header>";
     require_once('./layout/header.php');
     echo "</header>";
-    
-    if ((isset($_POST['userId']) && isset($_POST['idMovie']) && isset($_POST['date']) && isset($_POST['comments']) && isset($_POST['score']) && (isset($_POST['comments'])) {
+
+    if (isset($_POST['userId']) && isset($_POST['idMovie']) && isset($_POST['date']) && isset($_POST['comments']) && isset($_POST['score']) && isset($_POST['comments'])) {
 
         if ( ($_POST['userId'] != '') && ( $_POST['idMovie'] != '') && ( $_POST['date'] != '') && ( $_POST['comments'] != '') && ( $_POST['score'] != '') && ($_POST['comments'].length < 255) ) {
 
