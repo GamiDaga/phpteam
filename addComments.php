@@ -1,4 +1,5 @@
 <?php
+//last commit
 require_once('./sql/connect.php'); $link=connect();
 require_once('./functions/functions.php');
 require_once('./sql/query.php');

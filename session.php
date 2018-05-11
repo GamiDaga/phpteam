@@ -1,4 +1,5 @@
 <?php
+//last commit
     require_once("./layout/head.php");
     require_once("./classUser.php");
     require_once('./sql/connect.php'); $link = connect();

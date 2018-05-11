@@ -2,6 +2,7 @@
  * Materialize v0.98.1 (http://materializecss.com)
  * Copyright 2014-2015 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
+ * // last commit
  */
 // Check for jQuery.
 if (typeof(jQuery) === 'undefined') {

@@ -1,5 +1,5 @@
 <?php
-
+//last commit
 function movie(){
     $sql="SELECT id, nombre, sinopsis, anio, generos_id
             FROM peliculas";
